@@ -2,6 +2,7 @@
   // 指定脚本的运行环境
   "env": {
     "browser": true,
+    "node": true,
     "es2021": true
   },
   "extends": [
