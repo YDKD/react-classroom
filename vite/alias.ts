@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-11-03 20:38:45
  * @LastEditors: YDKD
- * @LastEditTime: 2022-11-03 22:10:11
+ * @LastEditTime: 2022-11-06 22:15:42
  */
 import path from 'path'
 import { AliasOptions } from 'vite'
@@ -19,6 +19,10 @@ const alias = [
   {
     find: /\@\//,
     replacement: `${pathResolve('src')}/`
+  },
+  {
+    find: /\~\//,
+    replacement: `${pathResolve('node_modules')}/`
   },
   {
     find: 'components',
