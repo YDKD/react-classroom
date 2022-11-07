@@ -3,11 +3,13 @@ import React, { memo } from 'react'
 import AhLeftWrapper from './style'
 
 const AhLeft = memo(() => {
-  return <AhLeftWrapper>
-    <div className='logo'>
-      <IconHeader />
-    </div>
-  </AhLeftWrapper>
+  return (
+    <AhLeftWrapper>
+      <div className="logo">
+        <IconHeader />
+      </div>
+    </AhLeftWrapper>
+  )
 })
 
 export default AhLeft
