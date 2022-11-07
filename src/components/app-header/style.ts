@@ -5,6 +5,8 @@ const AppWrappper = styled.div`
   height: 80px;
   align-items: center;
   border-bottom: 1px solid #ccc;
+
+  padding: 0 20px;
 `
 
 export default AppWrappper
