@@ -4,11 +4,12 @@ import routes from './router'
 
 import 'normalize.css'
 import '@/style/index.less'
+import AppHeader from './components/app-header'
 
 const App = memo(() => {
   return (
     <div className="app">
-      <div className="header">Header</div>
+      <AppHeader />
       <div className="container">{useRoutes(routes)}</div>
       <div className="footer">footer</div>
     </div>
