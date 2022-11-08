@@ -65,11 +65,40 @@ const AhRightWrapper = styled.div`
     padding: 5px 5px 5px 12px;
     border-radius: 21px;
     color: #717171;
+    position: relative;
 
     ${(props) => props.theme.shadow}
 
     .right {
       margin-left: 12px;
+    }
+
+    .profile-content {
+      width: 240px;
+      border-radius: 15px;
+      padding: 15px 0;
+      position: absolute;
+      color: rgba(0, 0, 0, 0.65);
+      right: 0;
+      top: 60px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 4px #ccc;
+
+      .profile-content-item {
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 0 0px 15px;
+        transition: background-color 250ms ease;
+
+        &:hover {
+          background-color: #F7F7F7;
+        }
+      }
+
+      .line {
+        border-bottom: 1px solid #ccc;
+        margin: 5px 0;
+      }
     }
   }
 `
