@@ -5,6 +5,10 @@ const AhLeftWrapper = styled.div`
 
   .logo {
     color: ${(props) => props.theme.color.primary};
+
+    svg {
+      cursor: pointer;
+    }
   }
 `
 

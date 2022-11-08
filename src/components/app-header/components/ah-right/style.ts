@@ -66,6 +66,8 @@ const AhRightWrapper = styled.div`
     border-radius: 21px;
     color: #717171;
 
+    ${(props) => props.theme.shadow}
+
     .right {
       margin-left: 12px;
     }

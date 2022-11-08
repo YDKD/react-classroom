@@ -3,7 +3,26 @@ const defaultTheme = {
     primary: '#FF385C',
     secondary: '#00848A',
     border: '#DDDDDD'
-  }
+  },
+  font: {
+    size: {
+      small: '12px',
+      medium: '14px',
+      large: '16px'
+    },
+    weight: {
+      light: 300,
+      normal: 400,
+      bold: 600
+    }
+  },
+  shadow: `
+    transition: box-shadow 250ms ease;
+
+    &:hover {
+      box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    }
+  `
 }
 
 export default defaultTheme
