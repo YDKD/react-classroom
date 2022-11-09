@@ -83,6 +83,7 @@ const AhRightWrapper = styled.div`
       top: 60px;
       border: 1px solid #ccc;
       box-shadow: 0 0 4px #ccc;
+      background: #fff;
 
       .profile-content-item {
         height: 40px;
@@ -91,7 +92,7 @@ const AhRightWrapper = styled.div`
         transition: background-color 250ms ease;
 
         &:hover {
-          background-color: #F7F7F7;
+          background-color: #f7f7f7;
         }
       }
 

@@ -1,16 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { getGoodPriceApi } from '@/api/home'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
+// 导出异步获取商品价格的方法
+export const getGoodPriceAction = createAsyncThunk('goodPrice', async () => {
+  const res = await getGoodPriceApi()
+  return res
+})
 
 const homeSlice = createSlice({
   name: 'home',
   initialState: {
-    name: 'Initial Name'
+    goodPrice: {}
   },
   reducers: {
-    setName(state, { payload }) {
-      state.name = payload
+    setGoodPrice(state, { payload }) {
+      state.goodPrice = payload
     }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getGoodPriceAction.fulfilled, (state, { payload }) => {
+      state.goodPrice = payload as any
+    })
   }
 })
 
-export const { setName } = homeSlice.actions
+export const { setGoodPrice } = homeSlice.actions
 export default homeSlice.reducer
