@@ -5,6 +5,12 @@ import type { FossRequestConfig, FossRequestInterceptor } from './type'
 import { REQUEST_LOADING_STATUS, REQUEST_LOADING_TIPS } from '@/global'
 import FossLoading from '@/components/foss-loading'
 import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
+
+const dom = document.createElement('div')
+dom.setAttribute('id', 'loading')
+
+const root = createRoot(dom)
 
 class FossRequest {
   requestInstance: AxiosInstance
@@ -88,10 +94,7 @@ class FossRequest {
       const dom = document.createElement('div')
       dom.setAttribute('id', 'loading')
       document.body.appendChild(dom)
-      ReactDOM.render(
-        <FossLoading spinning={true} tip={REQUEST_LOADING_TIPS} />,
-        dom
-      )
+      root.render(<FossLoading spinning={true} tip={REQUEST_LOADING_TIPS} />)
     }
     this.requestCountNum++
   }
