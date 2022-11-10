@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import type { ThemeProps } from 'styled-components'
 
 interface IProps {
-  [key: string]: any
+  verifyColor: string
 }
 
 const RoomItemWrapper = styled.div`
@@ -25,7 +26,7 @@ const RoomItemWrapper = styled.div`
     }
 
     .title {
-      color: ${(props) => props.verifyColor};
+      color: ${(props: ThemeProps<IProps>) => props.theme.verifyColor};
       font-size: 12px;
     }
 

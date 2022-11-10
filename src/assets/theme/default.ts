@@ -16,6 +16,7 @@ const defaultTheme = {
       bold: 600
     }
   },
+  containerWitdh: '1320px',
   shadow: `
     transition: box-shadow 250ms ease;
 

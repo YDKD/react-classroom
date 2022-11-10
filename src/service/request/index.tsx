@@ -4,7 +4,6 @@ import type { FossRequestConfig, FossRequestInterceptor } from './type'
 
 import { REQUEST_LOADING_STATUS, REQUEST_LOADING_TIPS } from '@/global'
 import FossLoading from '@/components/foss-loading'
-import ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
 
 const dom = document.createElement('div')

@@ -34,8 +34,8 @@ const Home = memo(() => {
         <div className="contetn-list">
           {goodPriceInfo?.list?.map((item) => {
             return (
-              <div className="content-item">
-                <RoomItem {...item} key={item.id} />
+              <div className="content-item" key={item.id}>
+                <RoomItem {...item} />
               </div>
             )
           })}

@@ -6,7 +6,7 @@
  */
 
 interface IObj {
-  [key: string]: any
+  [key: string]: string
 }
 
 function styleStrToObject(styleStr: string) {

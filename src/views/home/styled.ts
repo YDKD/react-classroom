@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const HomeWrapper = styled.div`
   .content {
-    width: 1032px;
+    width: ${(props) => props.theme.containerWitdh};
     margin: 0 auto;
     .contetn-list {
       display: flex;
