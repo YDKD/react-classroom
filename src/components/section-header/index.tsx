@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import SectionHeaderWrapper from './style'
 
 interface IProps {
   title: string
@@ -7,10 +8,10 @@ interface IProps {
 
 const SectionHeader = memo((props: IProps) => {
   return (
-    <section>
+    <SectionHeaderWrapper>
       <h2>{props.title}</h2>
       {props.subTitle && <h3>{props.subTitle}</h3>}
-    </section>
+    </SectionHeaderWrapper>
   )
 })
 

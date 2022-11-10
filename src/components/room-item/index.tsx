@@ -6,12 +6,14 @@ const RoomItem = memo((props: IGoodPriceItem) => {
   console.log('roomItem', props)
 
   return (
-    <RoomItemWrapper>
-      <div className="img">
-        <img src={props.picture_url} alt={props.name} />
-      </div>
-      <div className="info" style={{ color: props.verify_info.text_color }}>
-        {props.verify_info.messages.join('.')}
+    <RoomItemWrapper verifyColor={props?.verify_info?.text_color}>
+      <div className="inner">
+        <div className="cover">
+          <img src={props.picture_url} alt={props.name} />
+        </div>
+        <div className="title">{props.verify_info.messages.join('.')}</div>
+        <div className="desc">{props.name}</div>
+        <div className="price">¥{props.price}/晚</div>
       </div>
     </RoomItemWrapper>
   )
