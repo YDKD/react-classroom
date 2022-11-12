@@ -5,13 +5,21 @@ interface IGoodPriceItem {
   price: number
   price_format: string
   star_rating_color: string
-  review_count: number
+  reviews_count: number
   lat: number
   lng: number
   image_url: string
+  star_rating: number
+  star_rating_color: string
   verify_info: {
     messages: string[]
     text_color: string
+  }
+  bottom_info?: {
+    content?: string
+    content_color?: string
+    font_size?: number | string
+    visibility?: string
   }
 }
 

@@ -9,6 +9,7 @@ const RoomItemWrapper = styled.div`
   .inner {
     width: 100%;
     cursor: pointer;
+    padding-bottom: 8px;
     .cover {
       width: 100%;
       padding: 66.66% 8px 0;
@@ -36,6 +37,17 @@ const RoomItemWrapper = styled.div`
 
     .price {
       font-size: 14px;
+    }
+
+    .rate {
+      display: flex;
+      align-items: center;
+
+      .bottom-info {
+        .comment {
+          font-weight: 600;
+        }
+      }
     }
   }
 `

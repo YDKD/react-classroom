@@ -1,5 +1,6 @@
 import RoomItem from '@/components/room-item'
 import SectionHeader from '@/components/section-header'
+import SectionRooms from '@/components/section-rooms'
 import { AppDispatch, RootState } from '@/store'
 import { getGoodPriceAction } from '@/store/features/home'
 import { memo, useEffect } from 'react'
@@ -31,15 +32,7 @@ const Home = memo(() => {
 
       <div className="content">
         <SectionHeader title={goodPriceInfo.title} />
-        <div className="contetn-list">
-          {goodPriceInfo?.list?.map((item) => {
-            return (
-              <div className="content-item" key={item.id}>
-                <RoomItem {...item} />
-              </div>
-            )
-          })}
-        </div>
+        <SectionRooms list={goodPriceInfo.list} />
       </div>
     </HomeWrapper>
   )
