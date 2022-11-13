@@ -101,6 +101,7 @@ class FossRequest {
   hideLoading() {
     this.requestCountNum--
     if (this.requestCountNum === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       document.body.removeChild(document.getElementById('loading')!)
     }
   }
