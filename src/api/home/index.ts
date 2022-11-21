@@ -23,3 +23,10 @@ export function getHighScoreAPi() {
     method: 'GET'
   })
 }
+
+export function getDiscoutnApi() {
+  return baseRequest.request({
+    url: '/home/discount',
+    method: 'GET'
+  })
+}

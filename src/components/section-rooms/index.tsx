@@ -5,11 +5,14 @@ import SectionRoomsWrapper from './styled'
 
 interface IRoomListProps {
   list?: IGoodPriceItem[]
+  col?: number
 }
 
 const SectionRooms = memo((props: IRoomListProps) => {
+  console.log('props', props.col)
+
   return (
-    <SectionRoomsWrapper>
+    <SectionRoomsWrapper col={props.col}>
       <div className="list">
         {props?.list?.map((item) => {
           return (

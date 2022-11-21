@@ -1,4 +1,10 @@
-import styled from 'styled-components'
+import styled, { ThemedStyledProps } from 'styled-components'
+
+interface Props {
+  col: number
+}
+
+type TProps = ThemedStyledProps<Props, any>
 
 const SectionRoomsWrapper = styled.div`
   .list {
@@ -7,7 +13,7 @@ const SectionRoomsWrapper = styled.div`
     margin: 0 -8px;
 
     .list-item {
-      width: 25%;
+      width: ${(props: TProps) => 100 / props.col + '%'};
       padding: 0 8px;
     }
   }

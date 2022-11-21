@@ -9,10 +9,11 @@ import { IGoodPrice } from './types'
 
 const Home = memo(() => {
   // 从store中获取数据
-  const { goodPriceInfo, highScoreInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
     (state: RootState) => ({
       goodPriceInfo: state.home.goodPrice as IGoodPrice,
-      highScoreInfo: state.home.highScore as IGoodPrice
+      highScoreInfo: state.home.highScore as IGoodPrice,
+      discountInfo: state.home.discount as IGoodPrice
     }),
     shallowEqual
   )
@@ -30,7 +31,13 @@ const Home = memo(() => {
       <HomeBanner />
 
       <div className="home-wrapper">
+        {/* 折扣模块 */}
+        <HomeSection infoData={discountInfo} col={3} />
+
+        {/* 高性价比模块 */}
         <HomeSection infoData={goodPriceInfo} />
+
+        {/* 高评分模块 */}
         <HomeSection infoData={highScoreInfo} />
       </div>
     </HomeWrapper>

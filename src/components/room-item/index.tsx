@@ -4,7 +4,6 @@ import RoomItemWrapper from './styled'
 import Rating from '@mui/material/Rating'
 
 const RoomItem = memo((props: IGoodPriceItem) => {
-  console.log('roomItem', props)
 
   return (
     <RoomItemWrapper verifyColor={props?.verify_info?.text_color}>
