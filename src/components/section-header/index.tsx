@@ -10,7 +10,7 @@ const SectionHeader = memo((props: IProps) => {
   return (
     <SectionHeaderWrapper>
       <h2>{props.title}</h2>
-      {props.subTitle && <h3>{props.subTitle}</h3>}
+      {props.subTitle && <span className="sub-title">{props.subTitle}</span>}
     </SectionHeaderWrapper>
   )
 })
