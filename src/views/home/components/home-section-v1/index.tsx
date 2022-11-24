@@ -9,7 +9,7 @@ interface IProps {
   col?: number
 }
 
-const HomeSection = memo((props: IProps) => {
+const HomeSectionV1 = memo((props: IProps) => {
   return (
     <HomeSectionWrapper>
       <SectionHeader
@@ -22,4 +22,4 @@ const HomeSection = memo((props: IProps) => {
   )
 })
 
-export default HomeSection
+export default HomeSectionV1

@@ -1,11 +1,15 @@
-import { AppDispatch, RootState } from '@/store'
 import { getGoodPriceAction } from '@/store/features/home'
 import { memo, useEffect } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
-import HomeBanner from './components/home-banner'
-import HomeSection from './components/home-section'
-import HomeWrapper from './styled'
+
+import { AppDispatch, RootState } from '@/store'
+
 import { IGoodPrice } from './types'
+
+import HomeBanner from './components/home-banner'
+import HomeSectionV1 from './components/home-section-v1'
+import HomSetionV2 from './components/home-section-v2'
+import HomeWrapper from './styled'
 
 const Home = memo(() => {
   // 从store中获取数据
@@ -32,13 +36,13 @@ const Home = memo(() => {
 
       <div className="home-wrapper">
         {/* 折扣模块 */}
-        <HomeSection infoData={discountInfo} col={3} />
+        <HomSetionV2 infoData={discountInfo} col={3} />
 
         {/* 高性价比模块 */}
-        <HomeSection infoData={goodPriceInfo} />
+        <HomeSectionV1 infoData={goodPriceInfo} />
 
         {/* 高评分模块 */}
-        <HomeSection infoData={highScoreInfo} />
+        <HomeSectionV1 infoData={highScoreInfo} />
       </div>
     </HomeWrapper>
   )
