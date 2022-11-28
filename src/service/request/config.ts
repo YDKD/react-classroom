@@ -1,8 +1,10 @@
-let BASE_URL = ''
-const TIMEOUT = 10000
-const { VITE_ENV, VITE_REQUEST_URL } = import.meta.env
+let BASE_URL = '',
+  TEST_BASE_URL = ''
+const TIMEOUT = 1000
+const { VITE_ENV, VITE_REQUEST_URL, VITE_LOCAL_REQUEST_URL } = import.meta.env
 if (VITE_ENV === 'development') {
   BASE_URL = VITE_REQUEST_URL
+  TEST_BASE_URL = VITE_LOCAL_REQUEST_URL
 }
 
-export { BASE_URL, TIMEOUT }
+export { BASE_URL, TIMEOUT, VITE_LOCAL_REQUEST_URL }

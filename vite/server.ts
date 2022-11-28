@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-11-06 20:47:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-11-09 21:11:02
+ * @LastEditTime: 2022-11-28 21:38:57
  */
 
 import generateEnv from './utils/generateEnv'
@@ -18,6 +18,11 @@ const server = {
       target: process.env.VITE_REQUEST_URL,
       changeOrigin: true,
       rewrite: (p: string) => p.replace(/^\/airbnb\/api/, '/airbnb/api')
+    },
+    '/user': {
+      target: process.env.VITE_LOCAL_REQUEST_URL,
+      changeOrigin: true,
+      rewrite: (p: string) => p.replace(/^\/user/, '/user')
     }
   }
 }
