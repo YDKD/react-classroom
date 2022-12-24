@@ -2,7 +2,6 @@ import React, { memo, useState } from 'react'
 import classNames from 'classnames'
 import { SectionTabsWrapper } from './styled'
 
-
 interface IProps {
   tabList: Array<string>
   tabClick: (index: number, item: string) => void

@@ -8,7 +8,6 @@ import fs from 'fs'
  * @return {*}
  */
 const generateEnv = (command?: string) => {
-
   const NODE_ENV: string = process.env.NODE_ENV || 'development'
   let envFiles: string[] = []
 
@@ -27,7 +26,6 @@ const generateEnv = (command?: string) => {
   }
 
   for (const f of envFiles) {
-
     try {
       // 根据环境变量加载环境变量文件
       const file = dotenv.parse(fs.readFileSync(f))

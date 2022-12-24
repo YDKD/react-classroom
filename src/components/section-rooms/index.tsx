@@ -9,10 +9,8 @@ interface IRoomListProps {
 }
 
 const SectionRooms = memo((props: IRoomListProps) => {
-  console.log('props', props.col)
-
   return (
-    <SectionRoomsWrapper col={props.col}>
+    <SectionRoomsWrapper theme={{ col: props.col }}>
       <div className="list">
         {props?.list?.map((item) => {
           return (

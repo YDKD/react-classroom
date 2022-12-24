@@ -29,14 +29,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "vite/**/*.ts",
+    "vite/**/*.d.ts",
     "types/**/*.d.ts",
     "src/utils/index.ts",
     "vite/utils/generateEnv.ts",
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ],
   "exclude": ["dist", "node_modules"]
 }

@@ -1,11 +1,5 @@
 import styled, { ThemedStyledProps } from 'styled-components'
 
-interface Props {
-  col: number
-}
-
-type TProps = ThemedStyledProps<Props, any>
-
 const SectionRoomsWrapper = styled.div`
   .list {
     display: flex;
@@ -13,7 +7,7 @@ const SectionRoomsWrapper = styled.div`
     margin: 0 -8px;
 
     .list-item {
-      width: ${(props: TProps) => 100 / props.col + '%'};
+      width: ${(props) => 100 / props.theme.col + '%'};
       padding: 0 8px;
     }
   }

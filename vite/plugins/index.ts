@@ -3,11 +3,11 @@
  * @Autor: YDKD
  * @Date: 2022-11-03 20:46:16
  * @LastEditors: YDKD
- * @LastEditTime: 2022-11-03 20:57:10
+ * @LastEditTime: 2022-12-24 20:55:30
  */
 import react from '@vitejs/plugin-react'
 
-import type { PluginOption } from 'vite'
+import type { PluginOption } from 'vite/dist/node'
 
 /**
  * @param {PluginOption[]} PluginOption 插件配置
