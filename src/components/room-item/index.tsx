@@ -5,7 +5,11 @@ import Rating from '@mui/material/Rating'
 
 const RoomItem = memo((props: IGoodPriceItem) => {
   return (
-    <RoomItemWrapper verifyColor={props?.verify_info?.text_color}>
+    <RoomItemWrapper
+      theme={{
+        verifyColor: props?.verify_info?.text_color
+      }}
+    >
       <div className="inner">
         <div className="cover">
           <img src={props.picture_url} alt={props.name} />
