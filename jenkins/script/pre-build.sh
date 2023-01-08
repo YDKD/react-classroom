@@ -14,12 +14,12 @@ set -x
 npm config set registry https://registry.npm.taobao.org
 
 # 针对当前用户采用不安全策略
-npm config set unsafe-perm
+npm config set strict-ssl false
 # npm config set registry http://124.223.39.149:4873/
 
 # npm config list
 #判断缓存目录存在与否
-npm i pnpm -g
+npm i pnpm -g --unsafe-perm=true
 if [ ! -d $cacheDir ]
     then
         echo "no cache dir"
