@@ -12,6 +12,9 @@ set -x
 #npm config set strict-ssl false
 # npm config set registry "http://npm.wild-fox.cn"
 npm config set registry https://registry.npm.taobao.org
+
+# 针对当前用户采用不安全策略
+npm config set unsafe-perm
 # npm config set registry http://124.223.39.149:4873/
 
 # npm config list
