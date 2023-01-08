@@ -19,7 +19,7 @@ npm config set strict-ssl false
 
 # npm config list
 #判断缓存目录存在与否
-npm i pnpm -g --unsafe-perm=true
+npm i pnpm --unsafe-perm=true
 if [ ! -d $cacheDir ]
     then
         echo "no cache dir"
