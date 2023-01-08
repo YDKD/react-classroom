@@ -14,12 +14,9 @@ set -x
 npm config set registry https://registry.npm.taobao.org
 
 # 针对当前用户采用不安全策略
-npm config set strict-ssl false
 # npm config set registry http://124.223.39.149:4873/
 
 # npm config list
-#判断缓存目录存在与否
-npm i pnpm --unsafe-perm=true
 if [ ! -d $cacheDir ]
     then
         echo "no cache dir"
@@ -28,7 +25,7 @@ if [ ! -d $cacheDir ]
         touch $cacheCommitIDFile
         # echo  $GIT_COMMIT > $cacheCommitIDFile #先不用写入
         echo  "npm 安装"
-        pnpm i || pnpm i || exit 1
+        npm i || npm i || exit 1
 #判断缓存文件存在与否
 elif [ ! -f $cachePackage ] || [ ! -f $cacheCommitIDFile ]
     then
@@ -51,7 +48,7 @@ elif [ ! -f $cachePackage ] || [ ! -f $cacheCommitIDFile ]
         rm -rf node_modules
         sleep 1
         echo  "npm 安装"
-       pnpm i || pnpm i || exit 1
+       npm i || npm i || exit 1
 
 else
     echo "cache file exists"
@@ -89,7 +86,7 @@ else
         cp -f package.json "$cacheDir/"
         rm -rf node_modules
         sleep 1
-        pnpm i || pnpm i || exit 1
+        npm i || npm i || exit 1
     else
         echo "啥都不用干哈哈"
     fi
