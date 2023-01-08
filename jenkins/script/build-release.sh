@@ -2,6 +2,6 @@
 
 # set -x
 
-npm run build-release || exit 1
+npm run build || exit 1
 
 # set +x

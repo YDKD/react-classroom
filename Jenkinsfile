@@ -55,7 +55,7 @@ pipeline {
             // 因为我们是用来做不同分支任务触发时候的构建选择，所以这个不需要
             failFast false
             parallel {
-                stage('build-dev') {
+                stage('build-main') {
                     when {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
@@ -70,7 +70,7 @@ pipeline {
 
                     steps {
                         echo 'build-dev'
-                        sh './jenkins/script/build-dev.sh'
+                        sh './jenkins/script/build-main.sh'
                     }
                 }
 
