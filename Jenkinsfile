@@ -22,9 +22,8 @@ pipeline {
 
             when {
                 anyOf {               //   多分支才有的判断，一个真就通过过
-                    branch 'dev'
+                    branch 'main'
                     branch 'release'
-                    branch 'master'
                 }
             }
 
@@ -45,9 +44,8 @@ pipeline {
         stage('build-env') {
             when {
                 anyOf {
-                    branch 'dev'
+                    branch 'main'
                     branch 'release'
-                    branch 'master'
                 }
                 expression{
                     return !(fileExists("${resetFlagFile}"))
@@ -61,7 +59,7 @@ pipeline {
                     when {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
-                        branch 'dev'
+                        branch 'main'
                     }
                     agent {
                         docker {
@@ -93,23 +91,6 @@ pipeline {
                         sh './jenkins/script/build-release.sh'
                     }
                 }
-                stage('build-master') {
-                    when {
-                        branch 'master'
-                    }
-
-                    agent {
-                        docker {
-                            image 'node:16.14.0'
-                            reuseNode true
-                        }
-                    }
-
-                    steps {
-                        echo 'build-master'
-                        sh './jenkins/script/build-master.sh'
-                    }
-                }
             }
         }
 
@@ -132,9 +113,8 @@ pipeline {
                     return fileExists("${resetFlagFile}")
                 }
                 anyOf {
-                    branch 'dev'
+                    branch 'main'
                     branch 'release'
-                    branch 'master'
                     }
                 }
 
@@ -150,7 +130,7 @@ pipeline {
         stage('deliver') {
             when {
                 anyOf {
-                    branch 'dev'
+                    branch 'main'
                     branch 'release'
                 }
             }
@@ -163,7 +143,7 @@ pipeline {
 
         stage('deploy') {
             when {
-                branch 'master'
+                branch 'release'
             }
 
             steps {
