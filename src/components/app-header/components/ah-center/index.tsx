@@ -6,7 +6,7 @@ const AhCenter = memo(() => {
   return (
     <AhCenterWrapper>
       <div className="search">
-        <div className="text">搜索房源和体验</div>
+        <div className="text">搜索课程</div>
         <div className="icon">
           <IconSearch />
         </div>

@@ -2,6 +2,8 @@ import React, { memo } from 'react'
 import AppFooterWrapper from './style'
 import { list as footerData } from './config'
 
+import systemConfig from '@/config'
+
 const AppFooter = memo(() => {
   return (
     <AppFooterWrapper>
@@ -25,8 +27,7 @@ const AppFooter = memo(() => {
           })}
         </div>
         <div className="statement">
-          © 2022 Airbnb, Inc. All rights reserved.条款 · 隐私政策 · 网站地图 ·
-          全国旅游投诉渠道 12301
+          © 2022 {systemConfig.websiteTitle} 版权所有
         </div>
       </div>
     </AppFooterWrapper>
