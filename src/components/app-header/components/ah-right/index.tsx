@@ -22,13 +22,17 @@ const AhRight = memo(() => {
     setIsShow(true)
   }
 
+  function handleBtnClick(type: 'login' | 'register') {
+    console.log(type)
+  }
+
   return (
     <AhRightWrapper>
       <div className="btns">
-        <div>
+        <div onClick={() => handleBtnClick('login')}>
           <span>登录</span>
         </div>
-        <div>
+        <div onClick={() => handleBtnClick('register')}>
           <span>注册</span>
         </div>
         <div className="icon">

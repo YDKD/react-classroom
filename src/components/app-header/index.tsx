@@ -2,15 +2,15 @@ import { memo } from 'react'
 import AhCenter from './components/ah-center'
 import AhLeft from './components/ah-left'
 import AhRight from './components/ah-right'
-import AppWrappper from './style'
+import AppWrapper from './style'
 
 const AppHeader = memo(() => {
   return (
-    <AppWrappper>
+    <AppWrapper>
       <AhLeft />
       <AhCenter />
       <AhRight />
-    </AppWrappper>
+    </AppWrapper>
   )
 })
 

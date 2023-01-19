@@ -45,14 +45,7 @@ const Home = memo(() => {
       <HomeBanner />
 
       <div className="home-wrapper">
-        {/* 折扣模块 */}
-        <HomSetionV2 infoData={discountInfo} col={3} />
-
-        {/* 高性价比模块 */}
-        <HomeSectionV1 infoData={goodPriceInfo} />
-
-        {/* 高评分模块 */}
-        <HomeSectionV1 infoData={highScoreInfo} />
+        <h1>Home Container</h1>
       </div>
     </HomeWrapper>
   )
