@@ -1,11 +1,14 @@
 import IconGlobal from '@/assets/svg/IconGlobal'
 import IconMenu from '@/assets/svg/IconMenu'
 import IconPerson from '@/assets/svg/IconPerson'
+import LoginModal from '@/views/home/components/login-modal'
 import React, { memo, useEffect, useState } from 'react'
 import AhRightWrapper from './style'
 
 const AhRight = memo(() => {
   const [isShow, setIsShow] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalTitle, setModalTitle] = useState('登录')
 
   useEffect(() => {
     function windowHandleClick() {
@@ -22,8 +25,17 @@ const AhRight = memo(() => {
     setIsShow(true)
   }
 
+  /**
+   * @param {*} type
+   * @return {*}
+   * @description: 登录注册按钮点击事件
+   * @author: YDKD
+   */
   function handleBtnClick(type: 'login' | 'register') {
     console.log(type)
+    const title = type === 'login' ? '登录' : '注册'
+    setModalTitle(title)
+    setModalOpen(true)
   }
 
   return (
@@ -41,6 +53,12 @@ const AhRight = memo(() => {
           </span>
         </div>
       </div>
+
+      <LoginModal
+        modalOpen={modalOpen}
+        modalTitle={modalTitle}
+        setModalOpen={setModalOpen}
+      />
 
       <div className="profile" onClick={() => profileClickHandle()}>
         <IconMenu />
