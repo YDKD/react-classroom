@@ -12,7 +12,7 @@ interface IProps {
 const LoginModal = memo((props: IProps) => {
   const [form] = Form.useForm()
   const [disabledBtn, setDisabledBtn] = useState(true)
-  const [messageApi, contextHolder] = message.useMessage()
+  // const [messageApi, contextHolder] = message.useMessage()
 
   function handleCancel() {
     // 关闭弹窗
@@ -39,11 +39,10 @@ const LoginModal = memo((props: IProps) => {
     }
 
     sendEmailCodeApi(data).then((res) => {
-      console.log('res', res)
       if (res.status === 200) {
-        messageApi.success(res.data)
+        message.success(res.data)
       } else {
-        messageApi.error(res.data)
+        message.error(res.data)
       }
     })
   }
@@ -57,7 +56,6 @@ const LoginModal = memo((props: IProps) => {
         footer={null}
         onCancel={handleCancel}
       >
-        {contextHolder}
         {props.clickType === 'login' ? (
           <div className="login">
             <div className="title">登录</div>
