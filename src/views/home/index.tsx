@@ -45,7 +45,7 @@ const Home = memo(() => {
       <HomeBanner />
 
       <div className="home-wrapper">
-        <h1>Home Container</h1>
+        <h1 className="h">Home Container</h1>
       </div>
     </HomeWrapper>
   )

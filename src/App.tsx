@@ -11,7 +11,7 @@ const App = memo(() => {
   return (
     <div className="app">
       <AppHeader />
-      <div className="container">{useRoutes(routes)}</div>
+      <div className="main-container">{useRoutes(routes)}</div>
       <div className="footer">
         <AppFooter />
       </div>

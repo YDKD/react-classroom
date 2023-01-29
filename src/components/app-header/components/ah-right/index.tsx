@@ -8,7 +8,7 @@ import AhRightWrapper from './style'
 const AhRight = memo(() => {
   const [isShow, setIsShow] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [modalTitle, setModalTitle] = useState('登录')
+  const [clickType, setClickType] = useState<'login' | 'register'>('login')
 
   useEffect(() => {
     function windowHandleClick() {
@@ -33,8 +33,7 @@ const AhRight = memo(() => {
    */
   function handleBtnClick(type: 'login' | 'register') {
     console.log(type)
-    const title = type === 'login' ? '登录' : '注册'
-    setModalTitle(title)
+    setClickType(type)
     setModalOpen(true)
   }
 
@@ -56,7 +55,7 @@ const AhRight = memo(() => {
 
       <LoginModal
         modalOpen={modalOpen}
-        modalTitle={modalTitle}
+        clickType={clickType}
         setModalOpen={setModalOpen}
       />
 
