@@ -25,7 +25,7 @@ const baseRequest = new FossRequest({
   }
 })
 
-const testRequest = new FossRequest({
+const localRequest = new FossRequest({
   baseURL: VITE_LOCAL_REQUEST_URL,
   timeout: TIMEOUT,
   interceptors: {
@@ -48,4 +48,4 @@ const testRequest = new FossRequest({
   }
 })
 
-export { baseRequest, testRequest }
+export { baseRequest, localRequest }

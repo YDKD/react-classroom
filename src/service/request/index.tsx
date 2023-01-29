@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
-import type { FossRequestConfig, FossRequestInterceptor } from './type'
+import type { FossRequestConfig, FossRequestInterceptor, IBaseResponse } from './type'
 
 import { REQUEST_LOADING_STATUS, REQUEST_LOADING_TIPS } from '@/global'
 import FossLoading from '@/components/foss-loading'
@@ -44,6 +44,8 @@ class FossRequest {
     this.requestInstance.interceptors.response.use(
       (res) => {
         // console.log('全局实例的响应拦截')
+        console.log('res', res);
+
 
         // remove requestLoading
         this.hideLoading()
@@ -106,7 +108,7 @@ class FossRequest {
     }
   }
 
-  request<T>(config: FossRequestConfig<T>): Promise<T> {
+  request<T = IBaseResponse>(config: FossRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // single request interceptor
       if (config.interceptors?.requestInterceptor) {

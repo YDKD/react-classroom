@@ -1,4 +1,5 @@
-import { Modal, Form, Button, Input, Row, Col } from 'antd'
+import { sendEmailCodeApi } from '@/api/user'
+import { Modal, Form, Button, Input, Row, Col, message } from 'antd'
 import { memo, useState } from 'react'
 import LoginModalWrapper from './styled'
 
@@ -11,6 +12,7 @@ interface IProps {
 const LoginModal = memo((props: IProps) => {
   const [form] = Form.useForm()
   const [disabledBtn, setDisabledBtn] = useState(true)
+  const [messageApi, contextHolder] = message.useMessage()
 
   function handleCancel() {
     // 关闭弹窗
@@ -31,6 +33,21 @@ const LoginModal = memo((props: IProps) => {
     form.validateFields([fieldName])
   }
 
+  const sendEmailCode = () => {
+    const data: ISendEmail = {
+      email: form.getFieldValue('email')
+    }
+
+    sendEmailCodeApi(data).then((res) => {
+      console.log('res', res)
+      if (res.status === 200) {
+        messageApi.success(res.data)
+      } else {
+        messageApi.error(res.data)
+      }
+    })
+  }
+
   return (
     <LoginModalWrapper>
       <Modal
@@ -40,6 +57,7 @@ const LoginModal = memo((props: IProps) => {
         footer={null}
         onCancel={handleCancel}
       >
+        {contextHolder}
         {props.clickType === 'login' ? (
           <div className="login">
             <div className="title">登录</div>
@@ -132,7 +150,7 @@ const LoginModal = memo((props: IProps) => {
                       />
                     </Col>
                     <Col span={4}>
-                      <Button>获取验证码</Button>
+                      <Button onClick={sendEmailCode}>获取验证码</Button>
                     </Col>
                   </Row>
                 </Form.Item>

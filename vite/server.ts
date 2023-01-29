@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-11-06 20:47:43
  * @LastEditors: YDKD
- * @LastEditTime: 2023-01-28 16:01:41
+ * @LastEditTime: 2023-01-29 19:10:22
  */
 
 import generateEnv from './utils/generateEnv'
@@ -22,7 +22,7 @@ const server = {
     '/api': {
       target: process.env.VITE_LOCAL_REQUEST_URL,
       changeOrigin: true,
-      rewrite: (p: string) => p.replace(/^\/api/, '/api')
+      rewrite: (p: string) => p.replace(/^\/api/, '')
     }
   }
 }

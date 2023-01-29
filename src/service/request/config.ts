@@ -1,6 +1,6 @@
 let BASE_URL = '',
   TEST_BASE_URL = ''
-const TIMEOUT = 1000
+const TIMEOUT = 1000 * 30
 const { VITE_ENV, VITE_REQUEST_URL, VITE_LOCAL_REQUEST_URL } = import.meta.env
 if (VITE_ENV === 'development') {
   BASE_URL = VITE_REQUEST_URL
