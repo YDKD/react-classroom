@@ -24,6 +24,14 @@ const AppFooterWrapper = styled.div`
     color: #767676;
     text-align: center;
   }
+
+  .beian {
+    color: #767676;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 `
 
 export default AppFooterWrapper
