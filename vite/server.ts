@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-11-06 20:47:43
  * @LastEditors: YDKD
- * @LastEditTime: 2023-01-29 19:10:22
+ * @LastEditTime: 2023-02-03 16:19:12
  */
 
 import generateEnv from './utils/generateEnv'
@@ -15,12 +15,12 @@ const server = {
   host: '0.0.0.0',
   proxy: {
     '/airbnb/api': {
-      target: process.env.VITE_REQUEST_URL,
+      target: 'http://codercba.com:1888/airbnb/api',
       changeOrigin: true,
       rewrite: (p: string) => p.replace(/^\/airbnb\/api/, '/airbnb/api')
     },
     '/api': {
-      target: process.env.VITE_LOCAL_REQUEST_URL,
+      target: 'http://localhost:6000/',
       changeOrigin: true,
       rewrite: (p: string) => p.replace(/^\/api/, '')
     }

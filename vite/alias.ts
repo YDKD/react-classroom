@@ -21,7 +21,7 @@ const alias = [
     replacement: `${pathResolve('src')}/`
   },
   {
-    find: /\~\//,
+    find: /~\//,
     replacement: `${pathResolve('node_modules')}/`
   },
   {

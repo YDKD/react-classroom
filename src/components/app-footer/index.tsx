@@ -13,7 +13,13 @@ const AppFooter = memo(() => {
           © 2022 {systemConfig.websiteTitle} 版权所有
         </div>
         <div className="beian text-center">
-          <a href="https://beian.miit.gov.cn/">蜀ICP备2023001680号-1</a>
+          <a
+            rel="noopener noreferrer"
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+          >
+            蜀ICP备2023001680号-1
+          </a>
         </div>
       </div>
     </AppFooterWrapper>

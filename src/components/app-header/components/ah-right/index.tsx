@@ -1,7 +1,7 @@
 import IconGlobal from '@/assets/svg/IconGlobal'
 import IconMenu from '@/assets/svg/IconMenu'
 import IconPerson from '@/assets/svg/IconPerson'
-import LoginModal from '@/views/home/components/login-modal'
+import LoginAndRegisterModal from '@/views/home/components/modal/LoginAndRegisterModal'
 import React, { memo, useEffect, useState } from 'react'
 import AhRightWrapper from './style'
 
@@ -53,7 +53,7 @@ const AhRight = memo(() => {
         </div>
       </div>
 
-      <LoginModal
+      <LoginAndRegisterModal
         modalOpen={modalOpen}
         clickType={clickType}
         setModalOpen={setModalOpen}
