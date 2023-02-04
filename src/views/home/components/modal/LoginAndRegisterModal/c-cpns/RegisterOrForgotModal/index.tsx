@@ -209,7 +209,7 @@ const RegisterOrForgotModal = memo((props: ILoginAndRegisterModalProps) => {
                   className="btn"
                   onClick={() => form.validateFields()}
                 >
-                  注册
+                  {isRegister ? '注册' : '确定'}
                 </Button>
               </Form.Item>
 

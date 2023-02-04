@@ -4,8 +4,8 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 interface FossRequestInterceptor<T = AxiosResponse> {
   requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig
   requestInterceptorCatch?: (error: any) => any
-  reponseInterceptor?: (res: T) => T
-  reponseInterceptorCatch?: (error: any) => any
+  responseInterceptor?: (res: T) => T
+  responseInterceptorCatch?: (error: any) => any
 }
 
 // 请求拦截拓展

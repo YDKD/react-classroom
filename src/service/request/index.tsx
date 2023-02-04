@@ -43,6 +43,7 @@ class FossRequest {
       (error) => {
         console.log('请求失败', error)
         this.hideLoading()
+        return Promise.reject(error)
       }
     )
     this.requestInstance.interceptors.response.use(
@@ -65,7 +66,7 @@ class FossRequest {
         // remove request loading
         this.hideLoading()
 
-        const errorCode = error.response.status
+        const errorCode = error.response?.status
         // use Router to handle
         switch (errorCode) {
           case 404:
@@ -77,6 +78,8 @@ class FossRequest {
           default:
             break
         }
+
+        console.error('请求失败', error)
       }
     )
 
@@ -87,8 +90,8 @@ class FossRequest {
     )
 
     this.requestInstance.interceptors.response.use(
-      this.interceptors?.reponseInterceptor,
-      this.interceptors?.reponseInterceptorCatch
+      this.interceptors?.responseInterceptor,
+      this.interceptors?.responseInterceptorCatch
     )
   }
 
@@ -126,8 +129,8 @@ class FossRequest {
         .request<any, T>(config)
         .then((res) => {
           // single reponse interceptor
-          if (config.interceptors?.reponseInterceptor) {
-            res = config.interceptors.reponseInterceptor(res)
+          if (config.interceptors?.responseInterceptor) {
+            res = config.interceptors.responseInterceptor(res)
           }
 
           resolve(res)

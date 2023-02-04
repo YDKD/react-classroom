@@ -51,3 +51,15 @@ export function loginApi(data: IUserLogin) {
     data
   })
 }
+
+/**
+ * @return {Promise<IBaseResponse>}
+ * @description: 获取用户信息
+ * @author: YDKD
+ */
+export function getUserInfoApi() {
+  return localRequest.request({
+    url: '/user/info',
+    method: 'GET'
+  })
+}

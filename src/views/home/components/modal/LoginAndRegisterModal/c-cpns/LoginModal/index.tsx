@@ -6,11 +6,16 @@ import {
   TBtnClickType
 } from '@/components/app-header/components/ah-right/type'
 import { Button, Form, Input, message, Modal } from 'antd'
-import { memo } from 'react'
+import { memo, useState } from 'react'
+import { useCookies } from 'react-cookie'
 import LoginModalWrapper from './LoginModalWrapper'
 
 const LoginModal = memo((props: ILoginAndRegisterModalProps) => {
   const [form] = Form.useForm()
+  const [accessTokenCookie, setAccessTokenCookie] = useCookies(['accessToken'])
+  const [refreshokenCookie, setRefreshTokenCookie] = useCookies([
+    'refreshToken'
+  ])
 
   function handleCancel() {
     // 关闭弹窗
@@ -34,6 +39,11 @@ const LoginModal = memo((props: ILoginAndRegisterModalProps) => {
 
     loginApi(data).then((res) => {
       if (res.status === 200) {
+        // 存入
+        const { accessToken, refreshToken } = res.data
+        setAccessTokenCookie('accessToken', accessToken, { path: '/' })
+        setRefreshTokenCookie('refreshToken', refreshToken, { path: '/' })
+
         message.success(res.msg)
       } else {
         message.error(res.msg)
