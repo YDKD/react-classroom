@@ -1,24 +1,27 @@
 import { memo } from 'react'
-import RegisterModal from './c-cpns/RegisterModal'
+import RegisterOrForgotModal from './c-cpns/RegisterOrForgotModal'
 import LoginModal from './c-cpns/LoginModal'
 import LoginModalWrapper from './styled'
+import { ILoginAndRegisterModalProps } from '@/components/app-header/components/ah-right/type'
 
-interface IProps {
-  modalOpen: boolean
-  clickType: 'login' | 'register'
-  setModalOpen: (open: boolean) => void
-}
+const LoginAndRegisterModal = memo((props: ILoginAndRegisterModalProps) => {
+  let element
 
-const LoginAndRegisterModal = memo((props: IProps) => {
-  return (
-    <LoginModalWrapper>
-      {props.clickType === 'login' ? (
-        <LoginModal {...props}></LoginModal>
-      ) : (
-        <RegisterModal {...props}></RegisterModal>
-      )}
-    </LoginModalWrapper>
-  )
+  switch (props.clickType) {
+    case 'register':
+      element = <RegisterOrForgotModal {...props} />
+      break
+    case 'login':
+      element = <LoginModal {...props} />
+      break
+    case 'forget':
+      element = <RegisterOrForgotModal {...props} />
+      break
+    default:
+      break
+  }
+
+  return <LoginModalWrapper>{element}</LoginModalWrapper>
 })
 
 export default LoginAndRegisterModal

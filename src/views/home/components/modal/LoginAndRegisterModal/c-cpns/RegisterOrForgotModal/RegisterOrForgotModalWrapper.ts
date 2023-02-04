@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const RegisterModalWrapper = styled.div`
+const RegisterOrForgotModalWrapper = styled.div`
   .title {
     text-align: center;
     height: 78px;
@@ -14,9 +14,6 @@ const RegisterModalWrapper = styled.div`
     color: #666;
   }
 
-  .login-text {
-    text-align: right;
-  }
   .btn {
     width: 100%;
     background-color: #008489;
@@ -29,4 +26,4 @@ const RegisterModalWrapper = styled.div`
   }
 `
 
-export default RegisterModalWrapper
+export default RegisterOrForgotModalWrapper

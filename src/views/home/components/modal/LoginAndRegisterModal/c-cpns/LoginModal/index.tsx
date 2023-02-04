@@ -1,17 +1,15 @@
 import { encryptData } from '@/api/common'
 import { loginApi } from '@/api/user'
 import { IUserLogin } from '@/api/user/type'
+import {
+  ILoginAndRegisterModalProps,
+  TBtnClickType
+} from '@/components/app-header/components/ah-right/type'
 import { Button, Form, Input, message, Modal } from 'antd'
 import { memo } from 'react'
 import LoginModalWrapper from './LoginModalWrapper'
 
-interface IProps {
-  modalOpen: boolean
-  clickType: 'login' | 'register'
-  setModalOpen: (open: boolean) => void
-}
-
-const LoginModal = memo((props: IProps) => {
+const LoginModal = memo((props: ILoginAndRegisterModalProps) => {
   const [form] = Form.useForm()
 
   function handleCancel() {
@@ -45,6 +43,11 @@ const LoginModal = memo((props: IProps) => {
     })
   }
 
+  const goRegisterOrForget = (type: TBtnClickType) => {
+    props.setModalOpen(false)
+    props.setClickType && props.setClickType(type)
+  }
+
   /**
    * @param {string} fieldName 字段名
    * @description: 根据字段名校验表单
@@ -64,7 +67,7 @@ const LoginModal = memo((props: IProps) => {
         onCancel={handleCancel}
       >
         <div className="register">
-          <div className="title">邮箱注册</div>
+          <div className="title">邮箱登录</div>
           <div className="form-wrapper">
             <Form name={props.clickType} form={form} onFinish={onFinish}>
               {/* 邮箱 */}
@@ -120,6 +123,24 @@ const LoginModal = memo((props: IProps) => {
                   placeholder="8至16位大写字母、小写字母、数字、特殊字符组成"
                   onBlur={() => validateField('password')}
                 />
+              </Form.Item>
+
+              <Form.Item>
+                <div className="text-right cursor-pointer fast-entrance">
+                  <span
+                    className="register-text"
+                    onClick={() => goRegisterOrForget('register')}
+                  >
+                    注册
+                  </span>
+                  <span className="separator">|</span>
+                  <span
+                    className="forget-text"
+                    onClick={() => goRegisterOrForget('forget')}
+                  >
+                    忘记密码
+                  </span>
+                </div>
               </Form.Item>
 
               <Form.Item>

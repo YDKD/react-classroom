@@ -24,6 +24,15 @@ const LoginModalWrapper = styled.div`
     border-color: transparent;
   }
 
+  .fast-entrance {
+    color: #666;
+    font-size: 12px;
+
+    .separator {
+      padding: 0 8px;
+    }
+  }
+
   .ant-input-clear-icon {
     display: none;
   }

@@ -4,11 +4,12 @@ import IconPerson from '@/assets/svg/IconPerson'
 import LoginAndRegisterModal from '@/views/home/components/modal/LoginAndRegisterModal'
 import React, { memo, useEffect, useState } from 'react'
 import AhRightWrapper from './style'
+import { TBtnClickType } from './type'
 
 const AhRight = memo(() => {
   const [isShow, setIsShow] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [clickType, setClickType] = useState<'login' | 'register'>('login')
+  const [clickType, setClickType] = useState<TBtnClickType>('login')
 
   useEffect(() => {
     function windowHandleClick() {
@@ -31,7 +32,7 @@ const AhRight = memo(() => {
    * @description: 登录注册按钮点击事件
    * @author: YDKD
    */
-  function handleBtnClick(type: 'login' | 'register') {
+  function handleBtnClick(type: TBtnClickType) {
     console.log(type)
     setClickType(type)
     setModalOpen(true)

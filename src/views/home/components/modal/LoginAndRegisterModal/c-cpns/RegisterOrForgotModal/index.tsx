@@ -1,28 +1,36 @@
 import { encryptData } from '@/api/common'
-import { registerUserApi, sendEmailCodeApi } from '@/api/user'
+import { registerUserApi, sendEmailCodeApi, updateUserApi } from '@/api/user'
 import { IRegisterData, ISendEmail } from '@/api/user/type'
+import { ILoginAndRegisterModalProps } from '@/components/app-header/components/ah-right/type'
 import { Modal, Form, Button, Input, Row, Col, message } from 'antd'
 import { memo, useState } from 'react'
-import RegisterModalWrapper from './RegisterModalWrapper'
+import RegisterOrForgotModalWrapper from './RegisterOrForgotModalWrapper'
 
-interface IProps {
-  modalOpen: boolean
-  clickType: 'login' | 'register'
-  setModalOpen: (open: boolean) => void
-  setClickType?: (type: 'login' | 'register') => void
-}
-
-const RegisterModal = memo((props: IProps) => {
+const RegisterOrForgotModal = memo((props: ILoginAndRegisterModalProps) => {
+  console.log('propsxx', props)
   const [form] = Form.useForm()
   const [disabledBtn, setDisabledBtn] = useState(false)
   const [count, setCount] = useState(60)
   // const [messageApi, contextHolder] = message.useMessage()
+
+  const isRegister = props.clickType === 'register'
+
+  const modalTitle = isRegister ? '邮箱注册' : '邮箱找回'
 
   function handleCancel() {
     // 关闭弹窗
     props.setModalOpen(false)
     // 重置表单
     form.resetFields()
+  }
+
+  /**
+   * @description: 去登录
+   * @author: YDKD
+   */
+  const goLogin = () => {
+    props.setModalOpen(false)
+    props.setClickType && props.setClickType('login')
   }
 
   const onFinish = async (values: any) => {
@@ -38,14 +46,14 @@ const RegisterModal = memo((props: IProps) => {
       emailCode: values.emailCode,
       password: encryptPasswd
     }
-    registerUserApi(data).then((res) => {
+
+    const request = isRegister ? registerUserApi : updateUserApi
+
+    request(data).then((res) => {
       if (res.status === 200) {
-        message.success({
-          content: '用户注册成功，请登录！',
-          duration: 3
-        })
-        props.setModalOpen(false)
-        props.setClickType && props.setClickType('login')
+        const tips = isRegister ? '注册成功' : '密码找回成功！'
+        message.success(tips)
+        goLogin()
       } else {
         message.error(res.msg)
       }
@@ -53,6 +61,7 @@ const RegisterModal = memo((props: IProps) => {
       form.resetFields()
     })
   }
+
   /**
    * @param {string} fieldName 字段名
    * @description: 根据字段名校验表单
@@ -74,7 +83,7 @@ const RegisterModal = memo((props: IProps) => {
     sendEmailCodeApi(data)
       .then((res) => {
         if (res.status === 200) {
-          message.success(res.data)
+          message.success('发送成功，请注意查收！')
         } else {
           message.error(res.data)
         }
@@ -92,7 +101,7 @@ const RegisterModal = memo((props: IProps) => {
       })
   }
   return (
-    <RegisterModalWrapper>
+    <RegisterOrForgotModalWrapper>
       <Modal
         wrapClassName={'registerModal'}
         getContainer={false}
@@ -101,7 +110,7 @@ const RegisterModal = memo((props: IProps) => {
         onCancel={handleCancel}
       >
         <div className="register">
-          <div className="title">邮箱注册</div>
+          <div className="title">{modalTitle}</div>
           <div className="form-wrapper">
             <Form name={props.clickType} form={form} onFinish={onFinish}>
               {/* 邮箱 */}
@@ -185,7 +194,14 @@ const RegisterModal = memo((props: IProps) => {
                 </Row>
               </Form.Item>
 
-              <p className="text login-text cursor-pointer">去登录</p>
+              <Form.Item>
+                <div
+                  className="text text-right cursor-pointer"
+                  onClick={goLogin}
+                >
+                  去登录
+                </div>
+              </Form.Item>
 
               <Form.Item>
                 <Button
@@ -197,13 +213,15 @@ const RegisterModal = memo((props: IProps) => {
                 </Button>
               </Form.Item>
 
-              <p className="text">*若已有账号，则无需再次注册</p>
+              {props.clickType === 'register' && (
+                <p className="text">*若已有账号，则无需再次注册</p>
+              )}
             </Form>
           </div>
         </div>
       </Modal>
-    </RegisterModalWrapper>
+    </RegisterOrForgotModalWrapper>
   )
 })
 
-export default RegisterModal
+export default RegisterOrForgotModal

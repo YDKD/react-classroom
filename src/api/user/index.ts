@@ -25,6 +25,20 @@ export function registerUserApi(data: IRegisterData) {
 }
 
 /**
+ * @param {IRegisterData} data 修改数据
+ * @return {Promise<IBaseResponse>}
+ * @description: 用户注册
+ * @author: YDKD
+ */
+export function updateUserApi(data: IRegisterData) {
+  return localRequest.request({
+    url: '/user',
+    method: 'PUT',
+    data
+  })
+}
+
+/**
  * @param {IUserLogin} data 注册数据
  * @return {Promise<IBaseResponse>}
  * @description: 用户注册
