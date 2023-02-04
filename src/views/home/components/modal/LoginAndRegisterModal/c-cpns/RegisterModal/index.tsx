@@ -9,6 +9,7 @@ interface IProps {
   modalOpen: boolean
   clickType: 'login' | 'register'
   setModalOpen: (open: boolean) => void
+  setClickType?: (type: 'login' | 'register') => void
 }
 
 const RegisterModal = memo((props: IProps) => {
@@ -39,7 +40,12 @@ const RegisterModal = memo((props: IProps) => {
     }
     registerUserApi(data).then((res) => {
       if (res.status === 200) {
-        message.success(res.msg)
+        message.success({
+          content: '用户注册成功，请登录！',
+          duration: 3
+        })
+        props.setModalOpen(false)
+        props.setClickType && props.setClickType('login')
       } else {
         message.error(res.msg)
       }

@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import RegisterModal from './comps/RegisterModal'
-import LoginModal from './comps/LoginModal'
+import RegisterModal from './c-cpns/RegisterModal'
+import LoginModal from './c-cpns/LoginModal'
 import LoginModalWrapper from './styled'
 
 interface IProps {

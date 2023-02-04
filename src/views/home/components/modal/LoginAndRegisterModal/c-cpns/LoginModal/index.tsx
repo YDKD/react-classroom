@@ -1,4 +1,7 @@
-import { Button, Form, Input, Modal } from 'antd'
+import { encryptData } from '@/api/common'
+import { loginApi } from '@/api/user'
+import { IUserLogin } from '@/api/user/type'
+import { Button, Form, Input, message, Modal } from 'antd'
 import { memo } from 'react'
 import LoginModalWrapper from './LoginModalWrapper'
 
@@ -18,8 +21,28 @@ const LoginModal = memo((props: IProps) => {
     form.resetFields()
   }
 
-  const onFinish = () => {
+  const onFinish = async (values: any) => {
+    const encryptInfo = {
+      data: values.password
+    }
+
+    // 调用加密接口进行密码加密
+    const { data: encryptPasswd } = await encryptData(encryptInfo)
     // 处理登录功能
+    const data: IUserLogin = {
+      email: values.email,
+      password: encryptPasswd
+    }
+
+    loginApi(data).then((res) => {
+      if (res.status === 200) {
+        message.success(res.msg)
+      } else {
+        message.error(res.msg)
+      }
+
+      form.resetFields()
+    })
   }
 
   /**

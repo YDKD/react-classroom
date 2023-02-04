@@ -57,6 +57,7 @@ const AhRight = memo(() => {
         modalOpen={modalOpen}
         clickType={clickType}
         setModalOpen={setModalOpen}
+        setClickType={handleBtnClick}
       />
 
       <div className="profile" onClick={() => profileClickHandle()}>

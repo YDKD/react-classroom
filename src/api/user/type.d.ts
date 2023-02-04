@@ -9,4 +9,10 @@ interface IRegisterData {
   emailCode?: string
 }
 
-export type { ISendEmail, IRegisterData }
+interface IUserLogin {
+  phone?: string
+  email?: string
+  password: string
+}
+
+export type { ISendEmail, IRegisterData, IUserLogin }
