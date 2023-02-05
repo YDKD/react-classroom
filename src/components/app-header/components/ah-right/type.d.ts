@@ -4,7 +4,7 @@ interface ILoginAndRegisterModalProps {
   modalOpen: boolean
   clickType: TBtnClickType
   setModalOpen: (open: boolean) => void
-  setClickType?: (e: any, type: TBtnClickType) => void
+  setClickType?: (type: TBtnClickType) => void
 }
 
 export type { TBtnClickType, ILoginAndRegisterModalProps }

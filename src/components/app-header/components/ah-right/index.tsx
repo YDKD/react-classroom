@@ -17,6 +17,7 @@ import AhRightWrapper from './style'
 import { TBtnClickType } from './type'
 
 import useToken from '@/hooks/useToken'
+import { message } from 'antd'
 
 const { removeValue } = useToken()
 
@@ -75,7 +76,7 @@ const AhRight = memo(() => {
     // 退出登录
     logoutApi()
       .then(() => {
-        console.log('123')
+        message.success('退出成功')
       })
       .finally(() => {
         setIsShow(false)
