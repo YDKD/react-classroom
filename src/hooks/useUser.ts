@@ -1,15 +1,13 @@
 import { getUserInfoApi } from '@/api/user'
 import { useCookies } from 'react-cookie'
 
-const useUser = () => {
-  const [accessTokenCookie, setAccessTokenCookie] = useCookies(['accessToken'])
-  const [refreshokenCookie, setRefreshTokenCookie] = useCookies([
-    'refreshToken'
-  ])
+import useToken from '@/hooks/useToken'
 
+const { getValue } = useToken()
+
+const useUser = () => {
   const getUserInfo = () => {
-    console.log('执行')
-    if (accessTokenCookie.accessToken) {
+    if (getValue('access_token')) {
       return getUserInfoApi().then((res) => {
         console.log('res', res)
       })

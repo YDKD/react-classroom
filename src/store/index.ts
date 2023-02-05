@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import homeReducer from './features/home'
+import userReducer from './features/user'
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
   reducer: {
-    home: homeReducer
+    home: homeReducer,
+    user: userReducer
   }
 })
 

@@ -5,7 +5,7 @@ export const getUserInfo = createAsyncThunk(
   'user/getUserInfo',
   async (payload, { dispatch }) => {
     getUserInfoApi().then((res) => {
-      dispatch(setUser(res.data))
+      dispatch(setUserInfo(res.data))
     })
   }
 )
@@ -13,15 +13,15 @@ export const getUserInfo = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: {}
+    userInfo: null
   },
   reducers: {
-    setUser(state, { payload }) {
-      state.user = payload
+    setUserInfo(state, { payload }) {
+      state.userInfo = payload
     }
   }
 })
 
-const { setUser } = userSlice.actions
+const { setUserInfo } = userSlice.actions
 
 export default userSlice.reducer

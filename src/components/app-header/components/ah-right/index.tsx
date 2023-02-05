@@ -1,18 +1,45 @@
+import { logoutApi } from '@/api/user'
 import IconGlobal from '@/assets/svg/IconGlobal'
 import IconMenu from '@/assets/svg/IconMenu'
 import IconPerson from '@/assets/svg/IconPerson'
+import { RootState } from '@/store'
 import LoginAndRegisterModal from '@/views/home/components/modal/LoginAndRegisterModal'
-import React, { memo, useEffect, useState } from 'react'
+import { IUserInfo } from '@/views/home/types'
+import React, {
+  memo,
+  ReactEventHandler,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 import AhRightWrapper from './style'
 import { TBtnClickType } from './type'
+
+import useToken from '@/hooks/useToken'
+
+const { removeValue } = useToken()
 
 const AhRight = memo(() => {
   const [isShow, setIsShow] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [clickType, setClickType] = useState<TBtnClickType>('login')
+  const [isLogin, setIsLogin] = useState(false)
+
+  const profileContentRef = useRef<HTMLDivElement>(null)
+
+  const { userInfo } = useSelector(
+    (state: RootState) => ({
+      userInfo: state.user.userInfo as IUserInfo | null
+    }),
+    shallowEqual
+  )
 
   useEffect(() => {
-    function windowHandleClick() {
+    function windowHandleClick(e: MouseEvent) {
+      if (profileContentRef.current?.contains(e.target as Node)) {
+        return
+      }
       setIsShow(false)
     }
     window.addEventListener('click', windowHandleClick, true)
@@ -22,8 +49,38 @@ const AhRight = memo(() => {
     }
   }, [])
 
+  useEffect(() => {
+    console.log('userInfo', userInfo)
+    if (userInfo) {
+      setIsLogin(!!userInfo)
+    }
+  }, [userInfo])
+
+  /**
+   * @return {*}
+   * @description: 个人中心面板点击
+   * @author: YDKD
+   */
   function profileClickHandle() {
     setIsShow(true)
+  }
+
+  /**
+   * @description: 退出
+   * @author: YDKD
+   */
+  const logout = () => {
+    setIsLogin(false)
+
+    // 退出登录
+    logoutApi()
+      .then(() => {
+        console.log('123')
+      })
+      .finally(() => {
+        setIsShow(false)
+        removeValue(['access_token', 'refresh_token'])
+      })
   }
 
   /**
@@ -33,7 +90,6 @@ const AhRight = memo(() => {
    * @author: YDKD
    */
   function handleBtnClick(type: TBtnClickType) {
-    console.log(type)
     setClickType(type)
     setModalOpen(true)
   }
@@ -41,17 +97,21 @@ const AhRight = memo(() => {
   return (
     <AhRightWrapper>
       <div className="btns">
-        <div onClick={() => handleBtnClick('login')}>
-          <span>登录</span>
-        </div>
-        <div onClick={() => handleBtnClick('register')}>
-          <span>注册</span>
-        </div>
-        <div className="icon">
+        {!isLogin && (
+          <>
+            <div onClick={() => handleBtnClick('register')}>
+              <span>注册</span>
+            </div>
+            <div onClick={() => handleBtnClick('login')}>
+              <span>登录</span>
+            </div>
+          </>
+        )}
+        {/* <div className="icon">
           <span>
             <IconGlobal />
           </span>
-        </div>
+        </div> */}
       </div>
 
       <LoginAndRegisterModal
@@ -61,19 +121,48 @@ const AhRight = memo(() => {
         setClickType={handleBtnClick}
       />
 
-      <div className="profile" onClick={() => profileClickHandle()}>
+      <div className="profile" onClick={profileClickHandle}>
         <IconMenu />
         <div className="right">
           <IconPerson />
         </div>
 
         {isShow && (
-          <div className="profile-content">
-            <div className="profile-content-item">注册</div>
-            <div className="profile-content-item line">登录</div>
-            <div className="profile-content-item">出租房源</div>
-            <div className="profile-content-item">开展体验</div>
-            <div className="profile-content-item">帮助</div>
+          <div className="profile-content" ref={profileContentRef}>
+            {isLogin ? (
+              <>
+                <div
+                  className="profile-content-item"
+                  onClick={() => handleBtnClick('login')}
+                >
+                  通知
+                </div>
+                <div
+                  className="profile-content-item line"
+                  onClick={() => handleBtnClick('login')}
+                >
+                  个人中心
+                </div>
+                <div className="profile-content-item" onClick={logout}>
+                  退出
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className="profile-content-item"
+                  onClick={() => handleBtnClick('register')}
+                >
+                  注册
+                </div>
+                <div
+                  className="profile-content-item line"
+                  onClick={() => handleBtnClick('login')}
+                >
+                  登录
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>

@@ -30,4 +30,15 @@ interface IGoodPrice {
   list: Array<IGoodPriceItem>
 }
 
-export { IGoodPrice, IGoodPriceItem }
+interface IUserInfo {
+  userId: string
+  email: string
+  phone: string
+  avatar: string
+  create_time: string
+  birth: string
+  followed: string
+  nick: string
+}
+
+export { IGoodPrice, IGoodPriceItem, IUserInfo }

@@ -11,9 +11,20 @@ const useToken = () => {
     return cookie.getAll()
   }
 
+  const removeValue = (keys: string | string[]) => {
+    if (Array.isArray(keys)) {
+      keys.forEach((key) => {
+        cookie.remove(key)
+      })
+    } else {
+      cookie.remove(keys)
+    }
+  }
+
   return {
     getValue,
-    getAllValue
+    getAllValue,
+    removeValue
   }
 }
 

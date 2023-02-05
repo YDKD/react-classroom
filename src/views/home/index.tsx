@@ -20,7 +20,7 @@ const Home = memo(() => {
   //   shallowEqual
   // )
 
-  // // 获取派发函数
+  // 获取派发函数
   const dispatch = useDispatch<AppDispatch>()
 
   // 获取请求的数据

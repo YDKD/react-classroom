@@ -63,3 +63,15 @@ export function getUserInfoApi() {
     method: 'GET'
   })
 }
+
+/**
+ * @return {*}
+ * @description: 退出登录
+ * @author: YDKD
+ */
+export function logoutApi() {
+  return localRequest.request({
+    url: '/user/logout',
+    method: 'DELETE'
+  })
+}

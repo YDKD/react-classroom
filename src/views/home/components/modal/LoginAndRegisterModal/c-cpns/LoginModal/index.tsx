@@ -5,17 +5,22 @@ import {
   ILoginAndRegisterModalProps,
   TBtnClickType
 } from '@/components/app-header/components/ah-right/type'
+import { AppDispatch } from '@/store'
+import { getUserInfo } from '@/store/features/user'
 import { Button, Form, Input, message, Modal } from 'antd'
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
+import { useDispatch } from 'react-redux'
 import LoginModalWrapper from './LoginModalWrapper'
 
 const LoginModal = memo((props: ILoginAndRegisterModalProps) => {
   const [form] = Form.useForm()
-  const [accessTokenCookie, setAccessTokenCookie] = useCookies(['accessToken'])
+  const [accessTokenCookie, setAccessTokenCookie] = useCookies(['access_token'])
   const [refreshokenCookie, setRefreshTokenCookie] = useCookies([
-    'refreshToken'
+    'refresh_token'
   ])
+  // 获取派发函数
+  const dispatch = useDispatch<AppDispatch>()
 
   function handleCancel() {
     // 关闭弹窗
@@ -41,10 +46,17 @@ const LoginModal = memo((props: ILoginAndRegisterModalProps) => {
       if (res.status === 200) {
         // 存入
         const { accessToken, refreshToken } = res.data
-        setAccessTokenCookie('accessToken', accessToken, { path: '/' })
-        setRefreshTokenCookie('refreshToken', refreshToken, { path: '/' })
+        setAccessTokenCookie('access_token', accessToken, { path: '/' })
+        setRefreshTokenCookie('refresh_token', refreshToken, { path: '/' })
+
+        if (accessToken) {
+          // 获取用户信息
+          // 获取请求的数据
+          dispatch(getUserInfo())
+        }
 
         message.success(res.msg)
+        props.setModalOpen(false)
       } else {
         message.error(res.msg)
       }
