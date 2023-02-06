@@ -9,6 +9,7 @@ import type {
 import { REQUEST_LOADING_STATUS, REQUEST_LOADING_TIPS } from '@/global'
 import FossLoading from '@/components/foss-loading'
 import { createRoot } from 'react-dom/client'
+import { message } from 'antd'
 
 const dom = document.createElement('div')
 dom.setAttribute('id', 'loading')
@@ -70,10 +71,16 @@ class FossRequest {
         // use Router to handle
         switch (errorCode) {
           case 404:
-            console.log('404错误')
+            console.error('404错误')
+            message.error('Not Found')
+            break
+          case 403:
+            console.error('403错误')
+            message.error('Forbidden')
             break
           case 500:
-            console.log('服务内部错误')
+            console.error('服务内部错误')
+            message.error('Server Error')
             break
           default:
             break

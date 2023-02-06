@@ -16,7 +16,7 @@ import { shallowEqual, useSelector } from 'react-redux'
 import AhRightWrapper from './style'
 import { TBtnClickType } from './type'
 
-import useToken from '@/hooks/useToken'
+import useToken from '@/hooks/tools/useToken'
 import { message } from 'antd'
 
 const { removeValue } = useToken()

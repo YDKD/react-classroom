@@ -1,7 +1,7 @@
 import { getUserInfoApi } from '@/api/user'
 import { useCookies } from 'react-cookie'
 
-import useToken from '@/hooks/useToken'
+import useToken from '@/hooks/tools/useToken'
 
 const { getValue } = useToken()
 

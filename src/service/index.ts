@@ -1,4 +1,4 @@
-import useToken from '@/hooks/useToken'
+import useToken from '@/hooks/tools/useToken'
 import FossRequest from './request'
 import { BASE_URL, TIMEOUT, VITE_LOCAL_REQUEST_URL } from './request/config'
 
