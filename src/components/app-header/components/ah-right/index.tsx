@@ -5,19 +5,14 @@ import IconPerson from '@/assets/svg/IconPerson'
 import { RootState } from '@/store'
 import LoginAndRegisterModal from '@/views/home/components/modal/LoginAndRegisterModal'
 import { IUserInfo } from '@/views/home/types'
-import React, {
-  memo,
-  ReactEventHandler,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { shallowEqual, useSelector } from 'react-redux'
 import AhRightWrapper from './style'
 import { TBtnClickType } from './type'
 
 import useToken from '@/hooks/tools/useToken'
 import { message } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
 const { removeValue } = useToken()
 
@@ -26,6 +21,7 @@ const AhRight = memo(() => {
   const [modalOpen, setModalOpen] = useState(false)
   const [clickType, setClickType] = useState<TBtnClickType>('login')
   const [isLogin, setIsLogin] = useState(false)
+  const navigate = useNavigate()
 
   const profileContentRef = useRef<HTMLDivElement>(null)
 
@@ -81,6 +77,7 @@ const AhRight = memo(() => {
       .finally(() => {
         setIsShow(false)
         removeValue(['access_token', 'refresh_token'])
+        navigate('/home')
       })
   }
 
@@ -92,7 +89,19 @@ const AhRight = memo(() => {
    */
   function handleBtnClick(type: TBtnClickType) {
     setClickType(type)
+    setIsShow(false)
     setModalOpen(true)
+  }
+
+  /**
+   * @param {string} path 路径
+   * @return {*}
+   * @description: 链接跳转事件
+   * @author: YDKD
+   */
+  function handleNavigate(path: string) {
+    navigate(path)
+    setIsShow(false)
   }
 
   return (
@@ -132,17 +141,12 @@ const AhRight = memo(() => {
           <div className="profile-content" ref={profileContentRef}>
             {isLogin ? (
               <>
-                <div
-                  className="profile-content-item"
-                  onClick={() => handleBtnClick('login')}
-                >
-                  通知
-                </div>
+                <div className="profile-content-item">通知</div>
                 <div
                   className="profile-content-item line"
-                  onClick={() => handleBtnClick('login')}
+                  onClick={() => handleNavigate('account-settings')}
                 >
-                  个人中心
+                  账号
                 </div>
                 <div className="profile-content-item" onClick={logout}>
                   退出
@@ -157,7 +161,7 @@ const AhRight = memo(() => {
                   注册
                 </div>
                 <div
-                  className="profile-content-item line"
+                  className="profile-content-item"
                   onClick={() => handleBtnClick('login')}
                 >
                   登录

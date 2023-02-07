@@ -98,7 +98,10 @@ const AhRightWrapper = styled.div`
 
       .line {
         border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
         margin: 5px 0;
+        height: 48px;
+        line-height: 48px;
       }
     }
   }

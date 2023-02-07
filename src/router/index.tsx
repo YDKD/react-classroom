@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { IRoute } from 'types/router'
+import permissionRoutes from './permission-routes'
 
 const Home = React.lazy(() => import('@/views/home'))
 const SystemError = React.lazy(() => import('@/views/ErrorPages/SystemError'))
@@ -28,7 +29,8 @@ const routes: IRoute[] = [
   {
     path: '/error/forbidden',
     element: <Forbidden />
-  }
+  },
+  ...permissionRoutes
 ]
 
 export default routes
