@@ -1,6 +1,5 @@
-import { memo } from 'react'
-import { useRoutes } from 'react-router-dom'
-import routes from './router'
+import { memo, useEffect } from 'react'
+import { Outlet, useNavigate, useRoutes } from 'react-router-dom'
 
 import 'normalize.css'
 import '@/style/index.less'
@@ -11,7 +10,9 @@ const App = memo(() => {
   return (
     <div className="app">
       <AppHeader />
-      <div className="main-container">{useRoutes(routes)}</div>
+      <div className="main-container">
+        <Outlet />
+      </div>
       <div className="footer">
         <AppFooter />
       </div>

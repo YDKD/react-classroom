@@ -1,26 +1,30 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
+
+import { AliveScope } from 'react-activation'
 
 import store from '@/store'
-import App from './App'
+import { router } from './router'
 import { ThemeProvider } from 'styled-components'
 import { CookiesProvider } from 'react-cookie'
 import defaultTheme from './assets/theme/default'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Suspense fallback="loading">
-        <CookiesProvider>
-          <Provider store={store}>
-            <ThemeProvider theme={defaultTheme}>
-              <App />
-            </ThemeProvider>
-          </Provider>
-        </CookiesProvider>
-      </Suspense>
-    </BrowserRouter>
+    <CookiesProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={defaultTheme}>
+          <AliveScope>
+            <RouterProvider router={router} />
+          </AliveScope>
+        </ThemeProvider>
+      </Provider>
+    </CookiesProvider>
   </React.StrictMode>
 )

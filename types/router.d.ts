@@ -3,6 +3,9 @@
  */
 export interface IRoute {
   path: string
-  element: JSX.Element
+  name?: string
+  element: React.LazyExoticComponent<
+    React.MemoExoticComponent<() => JSX.Element>
+  >
   children?: IRoute[]
 }

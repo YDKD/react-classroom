@@ -10,6 +10,7 @@ import { REQUEST_LOADING_STATUS, REQUEST_LOADING_TIPS } from '@/global'
 import FossLoading from '@/components/foss-loading'
 import { createRoot } from 'react-dom/client'
 import { message } from 'antd'
+import { router } from '@/router'
 
 const dom = document.createElement('div')
 dom.setAttribute('id', 'loading')
@@ -68,23 +69,30 @@ class FossRequest {
         this.hideLoading()
 
         const errorCode = error.response?.status
+        let path
         // use Router to handle
         switch (errorCode) {
           case 404:
             console.error('404错误')
             message.error('Not Found')
+            path = '/error/not-found'
             break
           case 403:
             console.error('403错误')
             message.error('Forbidden')
+            path = '/error/forbidden'
             break
           case 500:
             console.error('服务内部错误')
             message.error('Server Error')
+            path = '/error/system-error'
             break
           default:
+            path = '/'
             break
         }
+
+        router.navigate(path)
 
         console.error('请求失败', error)
       }

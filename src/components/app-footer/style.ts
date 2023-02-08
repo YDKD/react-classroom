@@ -27,9 +27,10 @@ const AppFooterWrapper = styled.div`
 
   .beian {
     color: #767676;
-
-    &:hover {
-      color: #fff;
+    a {
+      &:hover {
+        color: #fff;
+      }
     }
   }
 `
