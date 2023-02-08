@@ -13,6 +13,7 @@ import { TBtnClickType } from './type'
 import useToken from '@/hooks/tools/useToken'
 import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { webConfig } from '@/constants'
 
 const { removeValue } = useToken()
 
@@ -77,7 +78,7 @@ const AhRight = memo(() => {
       .finally(() => {
         setIsShow(false)
         removeValue(['access_token', 'refresh_token'])
-        navigate('/home')
+        navigate(webConfig.rootUrl)
       })
   }
 

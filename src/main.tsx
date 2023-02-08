@@ -1,11 +1,7 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 
 import { AliveScope } from 'react-activation'
 

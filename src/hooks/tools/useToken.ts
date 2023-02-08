@@ -21,10 +21,15 @@ const useToken = () => {
     }
   }
 
+  const setValue = (key: string, value: string) => {
+    cookie.set(key, value)
+  }
+
   return {
     getValue,
     getAllValue,
-    removeValue
+    removeValue,
+    setValue
   }
 }
 

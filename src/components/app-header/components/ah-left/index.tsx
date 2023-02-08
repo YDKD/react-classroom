@@ -4,6 +4,8 @@ import AhLeftWrapper from './style'
 import systemConfig from '@/config'
 import { useNavigate } from 'react-router-dom'
 
+import { webConfig } from '@/constants'
+
 const AhLeft = memo(() => {
   const navigate = useNavigate()
   return (
@@ -18,7 +20,7 @@ const AhLeft = memo(() => {
 
         <span
           className="title cursor-pointer"
-          onClick={() => navigate('/home')}
+          onClick={() => navigate(webConfig.rootUrl)}
         >
           {systemConfig.websiteTitle}
         </span>

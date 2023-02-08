@@ -1,3 +1,4 @@
+import { webConfig } from '@/constants'
 import { Button, Result } from 'antd'
 import { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -5,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Forbidden = memo(() => {
   const navigate = useNavigate()
   const backHome = () => {
-    navigate('/home')
+    navigate(webConfig.rootUrl)
   }
 
   return (
