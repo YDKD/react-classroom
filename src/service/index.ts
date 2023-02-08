@@ -36,8 +36,10 @@ const localRequest = new FossRequest({
       // console.log('实例请求拦截')
 
       if (getValue('access_token')) {
-        config.headers!.Authorization = `Bearer ${getValue('access_token')}`
-        config.headers!['refreshToken'] = getValue('refresh_token')
+        config.headers = {
+          Authorization: `Bearer ${getValue('access_token')}`,
+          refreshToken: getValue('refresh_token')
+        }
       }
 
       return config
