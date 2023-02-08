@@ -100,7 +100,7 @@ class FossRequest {
 
     // add request instance interceptor
     this.requestInstance.interceptors.request.use(
-      this.interceptors?.requestInterceptor,
+      this.interceptors?.requestInterceptor as any,
       this.interceptors?.requestInterceptorCatch
     )
 
