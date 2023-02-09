@@ -32,7 +32,7 @@
     "vite/**/*.d.ts",
     "types/**/*.d.ts",
     "src/utils/index.ts",
-    "vite/utils/generateEnv.ts",
+    "vite/utils/generateEnv.ts"
   ],
   "exclude": ["dist", "node_modules"]
 }

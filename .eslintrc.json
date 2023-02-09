@@ -27,33 +27,18 @@
       "version": "detect"
     }
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/prop-types": [
-      "off"
-    ],
-    "react/jsx-key": [
-      "off"
-    ],
-    "react/react-in-jsx-scope": [
-      "off"
-    ],
+    "react/prop-types": ["off"],
+    "react/jsx-key": ["off"],
+    "react/react-in-jsx-scope": ["off"],
     "no-unused-vars": 0, //定义了变量却没有在代码中使用
     "@typescript-eslint/no-unused-vars": 1,
     "semi": 0, //缺少分号，行尾必须使用分号
     "curly": 0, //if 后必须包含 { ，单行 if 除外
     "default-case": 2, //switch 语句必须包含 default
-    "max-depth": [
-      2,
-      5
-    ], //最大块嵌套不能超过5层
-    "max-params": [
-      2,
-      8
-    ], //函数的形参不能多于8个
+    "max-depth": [2, 5], //最大块嵌套不能超过5层
+    "max-params": [2, 8], //函数的形参不能多于8个
     "new-cap": 0, //new关键字后类名应首字母大写
     "no-array-constructor": 2, //禁止使用Array构造函数，定义数组直接用最快捷的方式[1, 2, 3]
     // "no-await-in-loop":2,//禁止将await写在循环里,循环属于同步操作，不该将await异步操作写在内部
@@ -81,18 +66,12 @@
     "no-extend-native": [
       2,
       {
-        "exceptions": [
-          "Array",
-          "Object"
-        ]
+        "exceptions": ["Array", "Object"]
       }
     ], // 禁止扩展原生对象
     "no-floating-decimal": 2, // 不允许使用 2. 或 .5 来表示数字，需要用 2、2.0、0.5 的格式
     "no-implied-eval": 2, // 禁止在 setTimeout 和 setInterval 中传入字符串，因会触发隐式 eval
-    "no-mixed-spaces-and-tabs": [
-      "error",
-      "smart-tabs"
-    ], // 禁止混用空格和 tab 来做缩进，必须统一，用来对齐除外
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"], // 禁止混用空格和 tab 来做缩进，必须统一，用来对齐除外
     "no-multi-assign": 2, // 禁止连等赋值
     "no-multiple-empty-lines": [
       2,

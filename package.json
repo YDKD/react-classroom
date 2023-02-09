@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --fix --ext .js,.jsx,.vue,.ts,.tsx src/",
-    "prettier": "prettier --write .",
+    "prettier": "npx prettier --write .",
     "commit": "cz",
     "prepare": "husky install"
   },
