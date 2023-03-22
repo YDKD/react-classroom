@@ -1,5 +1,5 @@
 import { localRequest } from '@/service'
-import { IReqVideoListParams } from './type'
+import { IReqVideo, IReqVideoListParams } from './type'
 
 /**
  * @description: 获取视频分类列表
@@ -19,6 +19,18 @@ export function getVideoAreaList() {
 export function getVideoByAreaId(params: IReqVideoListParams) {
   return localRequest.request({
     url: '/video/videos',
+    method: 'GET',
+    params
+  })
+}
+
+/**
+ * @description: 获取视频分类列表
+ * @returns
+ */
+export function getVideoByVideoId(params: IReqVideo) {
+  return localRequest.request({
+    url: '/video/video-info',
     method: 'GET',
     params
   })

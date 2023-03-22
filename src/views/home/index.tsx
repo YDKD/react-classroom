@@ -12,6 +12,7 @@ import { Spin } from 'antd'
 import { TableParams } from 'types/common'
 import { PaginationConfig } from 'antd/es/pagination'
 import SectionVideo from './components/section-video'
+import { setVideoData } from '@/store/features/video'
 
 const Home = memo(() => {
   const [areaList, setAreaList] = useState<IAreaItem[]>([])

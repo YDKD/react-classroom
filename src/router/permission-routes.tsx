@@ -8,6 +8,11 @@ const permissionRoutes: IRoute[] = [
     path: 'account-settings',
     name: 'AccountSettings',
     element: AccountSettings
+  },
+  {
+    path: 'video/detail',
+    name: 'Video',
+    element: React.lazy(() => import('@/views/video-detail'))
   }
 ]
 

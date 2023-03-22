@@ -4,4 +4,8 @@ interface IReqVideoListParams {
   no: number
 }
 
-export type { IReqVideoListParams }
+interface IReqVideo {
+  videoId: number
+}
+
+export type { IReqVideoListParams, IReqVideo }

@@ -3,19 +3,26 @@ import { montageUrl } from '@/utils'
 import { memo } from 'react'
 import { IVideoListItem } from '../../types'
 import VideoItemWrapper from './styled'
-const VideoItem = memo((props: IVideoListItem) => {
+
+interface IProps {
+  handleItemClick: (id: number) => void
+  videoData: IVideoListItem
+}
+
+const VideoItem = memo((props: IProps) => {
+  const { videoData, handleItemClick } = props
   return (
     <VideoItemWrapper>
-      <div className="inner">
+      <div className="inner" onClick={(e) => handleItemClick(videoData.id)}>
         <div className="cover">
-          <img src={montageUrl(props.thumbnail)} alt={props.title} />
+          <img src={montageUrl(videoData.thumbnail)} alt={videoData.title} />
         </div>
         <div className="content">
           <div className="info">
-            <div className="title">{props.title}</div>
-            <div className="type">{dic_video_type[props.type]}</div>
+            <div className="title">{videoData.title}</div>
+            <div className="type">{dic_video_type[videoData.type]}</div>
           </div>
-          <div className="desc">{props.description}</div>
+          <div className="desc">{videoData.description}</div>
         </div>
       </div>
     </VideoItemWrapper>

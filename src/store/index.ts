@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import homeReducer from './features/home'
 import userReducer from './features/user'
+import videoReducer from './features/video'
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
   reducer: {
     home: homeReducer,
-    user: userReducer
+    user: userReducer,
+    video: videoReducer
   }
 })
 

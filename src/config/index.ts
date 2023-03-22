@@ -1,9 +1,4 @@
 /**
- * 网站标题
- */
-const websiteTitle = '小洁课堂'
-
-/**
  * IconFont 图标库地址
  */
 const config = {
@@ -21,7 +16,11 @@ const config = {
   /**
    * 后台管理前缀
    * */
-  adminPrefix: '/admin'
+  adminPrefix: '/web',
+  /**
+   * 网站标题
+   */
+  websiteTitle: '小洁课堂'
 }
 
 export default config
