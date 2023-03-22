@@ -32,7 +32,8 @@
     "react-is": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "xgplayer": "^2.32.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
