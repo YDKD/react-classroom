@@ -1,5 +1,6 @@
 enum WebConfig {
-  rootUrl = '/web/home'
+  rootUrl = '/web/home',
+  defaultActiveAreaId = 1
 }
 
 export default WebConfig

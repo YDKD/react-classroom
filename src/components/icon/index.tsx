@@ -1,7 +1,7 @@
 import { createFromIconfontCN } from '@ant-design/icons'
 import { memo, ReactElement } from 'react'
 import IconWrapper from './style'
-import systemConfig from '@/config'
+import config from '@/config'
 
 interface iconProps {
   /**
@@ -27,7 +27,7 @@ const IconFont = memo((props: iconProps): ReactElement => {
   const handleIconClick = () => onIconClick?.()
 
   const IconFont = createFromIconfontCN({
-    scriptUrl: systemConfig.iconFontUrl
+    scriptUrl: config.iconFontUrl
   })
 
   return (

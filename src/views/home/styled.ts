@@ -4,6 +4,10 @@ const HomeWrapper = styled.div`
   .home-wrapper {
     width: ${(props) => props.theme.containerWitdh};
     margin: 0 auto;
+
+    .area-content {
+      margin-bottom: 16px;
+    }
   }
 `
 

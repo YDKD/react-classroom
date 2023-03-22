@@ -23,7 +23,15 @@ const defaultTheme = {
     &:hover {
       box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
     }
-  `
+  `,
+  mixin: {
+    boxShadow: `
+      transition: box-shadow 200ms ease;
+      &:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,.18);
+      }
+    `
+  }
 }
 
 export default defaultTheme

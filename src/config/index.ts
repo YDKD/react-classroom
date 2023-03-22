@@ -6,6 +6,22 @@ const websiteTitle = '小洁课堂'
 /**
  * IconFont 图标库地址
  */
-const iconFontUrl = '//at.alicdn.com/t/c/font_3866866_j99jnhkfxpk.js'
+const config = {
+  /**
+   * IconFont 图标库地址
+   */
+  iconFontUrl: '//at.alicdn.com/t/c/font_3866866_j99jnhkfxpk.js',
+  /**
+   * 文件上传地址
+   * @type {string}
+   *
+   * */
+  fileUploadUrl: 'http://ydkd0606.top:86/group1/',
 
-export default { websiteTitle, iconFontUrl }
+  /**
+   * 后台管理前缀
+   * */
+  adminPrefix: '/admin'
+}
+
+export default config

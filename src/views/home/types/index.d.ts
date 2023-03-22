@@ -1,33 +1,7 @@
-interface IGoodPriceItem {
+interface IAreaItem {
   id: number
-  picture_url: string
-  name: string
-  price: number
-  price_format: string
-  star_rating_color: string
-  reviews_count: number
-  lat: number
-  lng: number
-  image_url: string
-  star_rating: number
-  star_rating_color: string
-  verify_info: {
-    messages: string[]
-    text_color: string
-  }
-  bottom_info?: {
-    content?: string
-    content_color?: string
-    font_size?: number | string
-    visibility?: string
-  }
-}
-
-interface IGoodPrice {
-  _id: string
-  type: string
-  title: string
-  list: Array<IGoodPriceItem>
+  areaName: string
+  createTime: string
 }
 
 interface IUserInfo {
@@ -41,4 +15,20 @@ interface IUserInfo {
   nick: string
 }
 
-export { IGoodPrice, IGoodPriceItem, IUserInfo }
+interface IVideoListItem {
+  id: number
+  createTime: string
+  description: string
+  duration: string
+  id: number
+  thumbnail: string
+  title: string
+  type: string
+  updateTime: string
+  url: string
+  userId: number
+  videoTag: null
+  areaName: string
+}
+
+export { IAreaItem, IUserInfo, IVideoListItem }
