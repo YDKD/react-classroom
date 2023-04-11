@@ -1,19 +1,18 @@
 import { AppDispatch, RootState } from '@/store'
-import { getVideoAction } from '@/store/features/video'
 import { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { IVideoListItem } from '../home/types'
-import Player from 'xgplayer'
-import config from '@/config'
+import VideoDetailWrapper from './styled'
+import VideoPlayer from '@/components/video-player'
+import { getVideoAction } from '@/store/features/video'
+import Banner from './components/banner'
 
 const videoDetail = memo(() => {
   const dispatch = useDispatch<AppDispatch>()
 
   const { state } = useLocation()
   const { videoId } = state
-
-  // 获取派发函数
 
   // 从store中获取到视频详情数据
   const { videoData } = useSelector(
@@ -29,15 +28,17 @@ const videoDetail = memo(() => {
     dispatch(getVideoAction(videoId))
   }, [])
 
-  useEffect(() => {
-    console.log('videoData', videoData?.url || '')
-    const player = new Player({
-      id: 'mse',
-      url: config.fileUploadUrl + videoData?.url
-    })
-  }, [videoData])
-
-  return <div id="mse"></div>
+  return (
+    <VideoDetailWrapper>
+      {/* banner部分 */}
+      {videoData && (
+        <>
+          <Banner videoData={videoData} />
+          <VideoPlayer videoData={videoData} />
+        </>
+      )}
+    </VideoDetailWrapper>
+  )
 })
 
 export default videoDetail

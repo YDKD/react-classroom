@@ -18,7 +18,9 @@ interface IUserInfo {
 interface IVideoListItem {
   id: number
   createTime: string
+  flowCount: number
   description: string
+  tagName: string
   duration: string
   id: number
   thumbnail: string

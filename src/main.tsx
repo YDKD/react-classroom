@@ -12,15 +12,15 @@ import { CookiesProvider } from 'react-cookie'
 import defaultTheme from './assets/theme/default'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <CookiesProvider>
-      <Provider store={store}>
-        <ThemeProvider theme={defaultTheme}>
-          <AliveScope>
-            <RouterProvider router={router} />
-          </AliveScope>
-        </ThemeProvider>
-      </Provider>
-    </CookiesProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <CookiesProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={defaultTheme}>
+        <AliveScope>
+          <RouterProvider router={router} />
+        </AliveScope>
+      </ThemeProvider>
+    </Provider>
+  </CookiesProvider>
+  // </React.StrictMode>
 )
