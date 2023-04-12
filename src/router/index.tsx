@@ -8,6 +8,7 @@ import {
 import { IRoute } from 'types/router'
 import permissionRoutes from './permission-routes'
 import useToken from '@/hooks/tools/useToken'
+import { message } from 'antd'
 
 const { getValue } = useToken()
 
@@ -56,6 +57,7 @@ const generateRouter = (routers: any) => {
         if (getValue('access_token') && getValue('refresh_token')) {
           return res
         } else {
+          message.warning('请先登录')
           return redirect(_redirectUrl)
         }
       }

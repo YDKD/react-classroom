@@ -35,3 +35,16 @@ export function getVideoByVideoId(params: IReqVideo) {
     params
   })
 }
+
+
+/**
+ * @description: 视频收藏
+ * @returns
+ */
+export function videoCollectionApi(data: IReqVideo) {
+  return localRequest.request({
+    url: '/video/video-collection',
+    method: 'POSt',
+    data
+  })
+}

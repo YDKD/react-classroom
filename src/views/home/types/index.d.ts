@@ -20,6 +20,7 @@ interface IVideoListItem {
   createTime: string
   flowCount: number
   description: string
+  maxScore: number
   tagName: string
   duration: string
   hasFollow: string

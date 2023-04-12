@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import BannerWrapper from './styled'
 import { IVideoListItem } from '@/views/home/types'
+import config from '@/config'
 
 interface IProps {
   videoData: IVideoListItem
@@ -15,7 +16,9 @@ const Banner = memo((props: IProps) => {
       <div className="meng">
         <div className="inner">
           <p className="text-2xl text-white">{videoData.title}</p>
-          <div className="desc">{videoData.description}</div>
+          <div className="desc">
+            {videoData.description.slice(0, 20) + '...'}
+          </div>
 
           <div className="detail">
             <div className="tag">视频标签：{videoData.tagName}</div>

@@ -18,3 +18,11 @@ body {
   z-index: 9999;
   font-size: 20px;
 }
+
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: '';
+  }
+}

@@ -12,4 +12,30 @@ const montageUrl = (url: string) => {
   return `${config.fileUploadUrl}${url}`
 }
 
-export { montageUrl }
+/**
+ * @description: 将秒数，转为时分秒
+ */
+
+const formatSeconds = (value: number) => {
+  let theTime = parseInt(value + '') // 秒
+  let theTime1 = 0 // 分
+  let theTime2 = 0 // 小时
+  if (theTime > 60) {
+    theTime1 = parseInt(theTime / 60 + '')
+    theTime = parseInt((theTime % 60) + '')
+    if (theTime1 > 60) {
+      theTime2 = parseInt(theTime1 / 60 + '')
+      theTime1 = parseInt((theTime1 % 60) + '')
+    }
+  }
+  let result = '' + parseInt(theTime + '') + '秒'
+  if (theTime1 > 0) {
+    result = '' + parseInt(theTime1 + '') + '分' + result
+  }
+  if (theTime2 > 0) {
+    result = '' + parseInt(theTime2 + '') + '小时' + result
+  }
+  return result
+}
+
+export { montageUrl, formatSeconds }
