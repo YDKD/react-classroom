@@ -4,11 +4,12 @@ import { IVideoListItem } from '@/views/home/types'
 
 interface IProps {
   videoData: IVideoListItem
+  joinStudy?: () => void
 }
 
 const Banner = memo((props: IProps) => {
   const { videoData } = props
-  console.log('videoData: ', videoData)
+
   return (
     <BannerWrapper>
       <div className="meng">
@@ -19,6 +20,10 @@ const Banner = memo((props: IProps) => {
           <div className="detail">
             <div className="tag">视频标签：{videoData.tagName}</div>
             <div className="tag">已加入人数：{videoData.flowCount}人</div>
+          </div>
+
+          <div className="join-btn" onClick={props.joinStudy}>
+            {videoData.hasFollow === '1' ? '已加入学习' : '加入学习'}
           </div>
         </div>
       </div>

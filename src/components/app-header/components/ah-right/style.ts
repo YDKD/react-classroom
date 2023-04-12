@@ -84,6 +84,7 @@ const AhRightWrapper = styled.div`
       border: 1px solid #ccc;
       box-shadow: 0 0 4px #ccc;
       background: #fff;
+      z-index: 999;
 
       .profile-content-item {
         height: 40px;

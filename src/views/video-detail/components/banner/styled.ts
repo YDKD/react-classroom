@@ -47,6 +47,19 @@ const BannerWrapper = styled.div`
           margin: 16px 0;
         }
       }
+
+      .join-btn {
+        position: absolute;
+        right: 16px;
+        top: 265px;
+        background: #fcfcfc;
+        text-align: center;
+        padding: 13px 0;
+        width: 240px;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #333;
+      }
     }
   }
 `

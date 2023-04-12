@@ -14,7 +14,9 @@ const useToken = () => {
   const removeValue = (keys: string | string[]) => {
     if (Array.isArray(keys)) {
       keys.forEach((key) => {
-        cookie.remove(key)
+        cookie.remove(key, {
+          path: '/'
+        })
       })
     } else {
       cookie.remove(keys)

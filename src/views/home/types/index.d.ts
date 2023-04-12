@@ -22,6 +22,7 @@ interface IVideoListItem {
   description: string
   tagName: string
   duration: string
+  hasFollow: string
   id: number
   thumbnail: string
   title: string
