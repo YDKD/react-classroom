@@ -51,14 +51,6 @@ const VideoPlayer = memo((props: IProps) => {
               backgroundColor: 'rgba(255, 255, 255, 0.1)'
             },
             mode: 'top' //显示模式，top顶部居中，bottom底部居中，scroll滚动，默认为scroll
-            // el: DOM //直接传入一个自定义的DOM元素作为弹幕，使用该项的话会忽略所提供的txt
-            // eventListeners: [{ //支持自定义DOM设置DOM监听事件
-            //   event: 'click',
-            //   listener: function (e) {
-            //     console.log('click')
-            //   },
-            //   useCapture: false,
-            // }]
           }
         ],
         area: {

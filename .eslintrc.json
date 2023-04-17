@@ -107,6 +107,7 @@
     "symbol-description": 2, // 创建 Symbol 的时候必须传入描述
     "yoda": 2, // 禁止Yoda格式的判断条件，如 if (true === a)，应使用 if (a === true)
     "react/display-name": "off",
-    "@typescript-eslint/no-explicit-any": 0 // 禁止使用any
+    "@typescript-eslint/no-explicit-any": 0, // 禁止使用any
+    "@typescript-eslint/ban-ts-comment": 0 // 禁止使用 ts-ignore
   }
 }
