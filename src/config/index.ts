@@ -5,7 +5,7 @@ const config = {
   /**
    * IconFont 图标库地址
    */
-  iconFontUrl: '//at.alicdn.com/t/c/font_3866866_x8tpj54m6rd.js',
+  iconFontUrl: '//at.alicdn.com/t/c/font_3866866_aijqi7qzn7.js',
   /**
    * 文件上传地址
    * @type {string}

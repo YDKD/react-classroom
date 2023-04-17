@@ -33,6 +33,10 @@ interface IVideoListItem {
   userId: number
   videoTag: null
   areaName: string
+  /**
+   * 耗时
+   */
+  consumeTime: number
 }
 
 export { IAreaItem, IUserInfo, IVideoListItem }

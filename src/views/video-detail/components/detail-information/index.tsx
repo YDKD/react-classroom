@@ -60,6 +60,20 @@ const DetailInformation = memo((props: IProps) => {
           <div className="desc">{videoData.maxScore || 0}分</div>
         </div>
       </div>
+      <div className="item">
+        <div className="icon">
+          <IconFont
+            iconName="icon-zonghaoshishichang"
+            customStyle={{
+              fontSize: '32px'
+            }}
+          />
+        </div>
+        <div className="text">
+          <div className="title">用时最短</div>
+          <div className="desc">{formatSeconds(videoData.consumeTime) || 0}</div>
+        </div>
+      </div>
     </DetailInformationWrapper>
   )
 })

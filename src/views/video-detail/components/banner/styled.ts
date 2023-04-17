@@ -24,7 +24,7 @@ const BannerWrapper = styled.div`
       height: 100%;
       position: relative;
       z-index: 2;
-      max-width: 1202px;
+      max-width: 1350px;
       margin: auto;
       color: #fff;
 
@@ -50,7 +50,7 @@ const BannerWrapper = styled.div`
 
       .join-btn {
         position: absolute;
-        right: 16px;
+        right: 120px;
         top: 265px;
         background: #fcfcfc;
         text-align: center;
@@ -59,6 +59,17 @@ const BannerWrapper = styled.div`
         border-radius: 4px;
         cursor: pointer;
         color: #333;
+      }
+
+      .challenge-btn {
+        position: absolute;
+        right: 10px;
+        top: 265px;
+        border-radius: 4px;
+        background-color: #1677ff;
+        color: #fff;
+        padding: 13px 20px;
+        cursor: pointer;
       }
     }
   }
