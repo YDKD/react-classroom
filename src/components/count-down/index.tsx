@@ -28,8 +28,7 @@ const Countdown = ({
       const currentConsumeTime =
         (minutes - timeLeft.minutes) * 60 + (seconds - timeLeft.seconds)
 
-      handleTimeElapsed &&
-        handleTimeElapsed(currentConsumeTime)
+      handleTimeElapsed && handleTimeElapsed(currentConsumeTime)
     } else {
       countdownInterval = setInterval(() => {
         if (timeLeft.seconds === 0) {
