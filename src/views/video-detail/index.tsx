@@ -7,15 +7,18 @@ import VideoDetailWrapper from './styled'
 import { getVideoAction } from '@/store/features/video'
 import Banner from './components/banner'
 import { Modal, message } from 'antd'
-import { videoCollectionApi } from '@/api/video'
+import { queryQuestionApi, videoCollectionApi } from '@/api/video'
 import Container from './components/container'
 import DetailInformation from './components/detail-information'
 import Challenge from './components/challenge'
+import { IQuestionItem } from '@/api/video/type'
 
 const videoDetail = memo(() => {
   const dispatch = useDispatch<AppDispatch>()
 
   const [showChallenge, setShowChallenge] = useState<boolean>(false)
+
+  const [questionList, setQuestionList] = useState<IQuestionItem[]>([])
 
   const { state } = useLocation()
   const { videoId } = state
@@ -58,7 +61,25 @@ const videoDetail = memo(() => {
    * 开始答题
    */
   const startChallenge = () => {
-    setShowChallenge(true)
+    // 根据当前视频的id，获取到当前视频的答题数据
+    const params = {
+      videoId: videoId
+    }
+
+    queryQuestionApi(params).then((res) => {
+      if (res.status === 200) {
+        // 将答题数据存储到store中
+        if (res.data?.length > 0) {
+          setQuestionList(res.data)
+          setShowChallenge(true)
+        } else {
+          // 未创建题目
+          message.warning('暂未创建题目')
+        }
+      }
+    })
+
+    // setShowChallenge(true)
   }
 
   /**
@@ -71,7 +92,7 @@ const videoDetail = memo(() => {
   useEffect(() => {
     // 根据videoId获取到当前视频的详情数据
     dispatch(getVideoAction(videoId))
-  }, [])
+  }, [showChallenge])
 
   return (
     <VideoDetailWrapper>
@@ -79,7 +100,11 @@ const videoDetail = memo(() => {
       {videoData &&
         (showChallenge ? (
           // 答题
-          <Challenge videoData={videoData} logout={logout} />
+          <Challenge
+            videoData={videoData}
+            questionList={questionList}
+            logout={logout}
+          />
         ) : (
           // 视频详情
           <>

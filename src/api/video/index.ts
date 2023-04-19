@@ -1,5 +1,5 @@
 import { localRequest } from '@/service'
-import { IReqVideo, IReqVideoListParams } from './type'
+import { IAddQuestionScore, IReqVideo, IReqVideoListParams } from './type'
 
 /**
  * @description: 获取视频分类列表
@@ -43,7 +43,31 @@ export function getVideoByVideoId(params: IReqVideo) {
 export function videoCollectionApi(data: IReqVideo) {
   return localRequest.request({
     url: '/video/video-collection',
-    method: 'POSt',
+    method: 'POST',
+    data
+  })
+}
+
+/**
+ * @description: 根据视频ID，获取视频题目ID
+ * @returns
+ */
+export function queryQuestionApi(params: IReqVideo) {
+  return localRequest.request({
+    url: '/video/question/query',
+    method: 'GET',
+    params
+  })
+}
+
+/**
+ * @description: 添加答题记录
+ * @returns
+ */
+export function addQuestionRecordApi(data: IAddQuestionScore) {
+  return localRequest.request({
+    url: '/video/question/score',
+    method: 'POST',
     data
   })
 }

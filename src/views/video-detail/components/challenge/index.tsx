@@ -1,118 +1,44 @@
 import { memo, useEffect, useState } from 'react'
 import ChallengeWrapper from './styled'
 import { IVideoListItem } from '@/views/home/types'
-import { Button, Popconfirm } from 'antd'
+import { Button, Popconfirm, message } from 'antd'
 import Countdown from '@/components/count-down'
 
 // @ts-ignore
 import Quiz from 'react-quiz-component'
+import { IAddQuestionScore, IQuestionItem } from '@/api/video/type'
+import { addQuestionRecordApi } from '@/api/video'
 
 export const quiz = {
-  quizTitle: 'React Quiz Component Demo',
-  quizSynopsis:
-    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim',
-  nrOfQuestions: '4',
-  questions: [
-    {
-      question:
-        'How can you access the state of a component from inside of a member function?',
-      questionType: 'text',
-      questionPic: 'https://dummyimage.com/600x400/000/fff&text=X', // if you need to display Picture in Question
-      answerSelectionType: 'single',
-      answers: [
-        'this.getState()',
-        'this.prototype.stateValue',
-        'this.state',
-        'this.values'
-      ],
-      correctAnswer: '3',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20'
-    },
-    {
-      question: 'ReactJS is developed by _____?',
-      questionType: 'text',
-      answerSelectionType: 'single',
-      answers: ['Google Engineers', 'Facebook Engineers'],
-      correctAnswer: '2',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20'
-    },
-    {
-      question: 'ReactJS is an MVC based framework?',
-      questionType: 'text',
-      answerSelectionType: 'single',
-      answers: ['True', 'False'],
-      correctAnswer: '2',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '10'
-    },
-    {
-      question: 'Which of the following concepts is/are key to ReactJS?',
-      questionType: 'text',
-      answerSelectionType: 'single',
-      answers: [
-        'Component-oriented design',
-        'Event delegation model',
-        'Both of the above'
-      ],
-      correctAnswer: '3',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '30'
-    },
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
-      questionType: 'photo',
-      answerSelectionType: 'single',
-      answers: [
-        'https://dummyimage.com/600x400/000/fff&text=A',
-        'https://dummyimage.com/600x400/000/fff&text=B',
-        'https://dummyimage.com/600x400/000/fff&text=C',
-        'https://dummyimage.com/600x400/000/fff&text=D'
-      ],
-      correctAnswer: '1',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20'
-    },
-    {
-      question: 'What are the advantages of React JS?',
-      questionType: 'text',
-      answerSelectionType: 'multiple',
-      answers: [
-        'React can be used on client and as well as server side too',
-        'Using React increases readability and makes maintainability easier. Component, Data patterns improves readability and thus makes it easier for manitaining larger apps',
-        'React components have lifecycle events that fall into State/Property Updates',
-        'React can be used with any other framework (Backbone.js, Angular.js) as it is only a view layer'
-      ],
-      correctAnswer: [1, 2, 4],
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20'
-    }
-  ]
+  quizTitle: '',
+  quizSynopsis: '',
+  nrOfQuestions: '0',
+  questions: [],
+  appLocale: {
+    landingHeaderText: '总共：<questionLength> 题',
+    question: '问题：',
+    startQuizBtn: '开始答题',
+    resultFilterAll: '全部',
+    resultPagePoint: '你当前所得分数为 <correctPoints>， 总分为 <totalPoints>.',
+    singleSelectionTagText: '单选题',
+    multipleSelectionTagText: '多选题',
+    pickNumberOfSelection: '选择 <numberOfSelection>',
+    resultFilterCorrect: '正确答题',
+    resultFilterIncorrect: '错误答题',
+    prevQuestionBtn: '上一提',
+    nextQuestionBtn: '下一题',
+    resultPageHeaderText:
+      '你已经完成所有答题. 总共正确题数 <correctIndexLength> / <questionLength>.'
+  }
 }
 
 interface IProps {
   videoData: IVideoListItem
   logout?: () => void
+  questionList: IQuestionItem[]
 }
+
+let userCorrectPoints = 0
 
 // 答题模块
 const Challenge = memo((props: IProps) => {
@@ -124,11 +50,70 @@ const Challenge = memo((props: IProps) => {
     setConsumeTime(milliseconds)
   }
 
+  const handleQuiz = () => {
+    const { videoData, questionList } = props
+
+    quiz.quizTitle = '“' + videoData.title + '“' + ' 答题'
+    quiz.quizSynopsis = ''
+    quiz.nrOfQuestions = questionList.length + ''
+    quiz.questions = questionList.map((item) => {
+      return {
+        question: item.question,
+        questionType: 'text',
+        answerSelectionType: item.answerSelectionType,
+        answers: JSON.parse(item.options),
+        correctAnswer: JSON.parse(item.answer) + '',
+        messageForCorrectAnswer: '正确',
+        messageForIncorrectAnswer: '错误',
+        explanation: item.explanation,
+        point: item.point + ''
+      }
+    }) as any
+  }
+
+  // 处理拼装答题信息
+  handleQuiz()
+
+  // 每选择一题，就会触发一次
+  const onQuestionSubmit = (args1: any) => {
+    const { isCorrect, question } = args1
+    if (isCorrect) {
+      userCorrectPoints += Number(question.point)
+    }
+  }
+
+  // 答题完成后触发
+  const onComplete = (args2: any) => {
+    userCorrectPoints = args2.correctPoints
+  }
+
+  const submitScore = () => {
+    // 清除定时器
+    setCompleted(true)
+
+    // 提交答题记录
+    const data: IAddQuestionScore = {
+      consumeTime: consumeTime,
+      quizId: props.questionList.map((item) => item.id).join(','),
+      score: userCorrectPoints,
+      videoId: props.videoData.id
+    }
+
+    console.log('data', data)
+    addQuestionRecordApi(data).then((res) => {
+      if (res.status === 200) {
+        message.success('提交成功')
+      } else {
+        message.error('提交失败')
+      }
+    })
+  }
+
   return (
     <ChallengeWrapper>
       <div className="logout">
         <Popconfirm
-          title="是否退出答题？"
+          title="退出答题将不会保留答题记录，是否继续退出？"
           onConfirm={props.logout}
           okText="确定"
           cancelText="取消"
@@ -138,7 +123,7 @@ const Challenge = memo((props: IProps) => {
         <div className="timer">
           倒计时：
           <Countdown
-            minutes={1}
+            minutes={30}
             seconds={0}
             completed={completed}
             handleTimeElapsed={handleTimeElapsed}
@@ -146,11 +131,16 @@ const Challenge = memo((props: IProps) => {
         </div>
       </div>
       <div className="question-wrapper">
-        <Quiz quiz={quiz} />
+        {/* 答题组件 */}
+        <Quiz
+          quiz={quiz}
+          onQuestionSubmit={onQuestionSubmit}
+          onComplete={onComplete}
+        />
       </div>
 
       <div className="footer">
-        <Button type="primary" onClick={() => setCompleted(true)}>
+        <Button type="primary" onClick={submitScore}>
           提交
         </Button>
       </div>

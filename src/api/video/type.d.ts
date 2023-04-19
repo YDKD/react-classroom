@@ -8,4 +8,25 @@ interface IReqVideo {
   videoId: number
 }
 
-export type { IReqVideoListParams, IReqVideo }
+interface IQuestionItem {
+  id: number
+  quizTitle: string
+  videoId: number
+  question: string
+  answerSelectionType: string
+  options: string
+  answer: string
+  explanation: string
+  difficulty: string
+  point: number
+  createTime: string
+}
+
+interface IAddQuestionScore {
+  videoId: number
+  quizId: string
+  score: number
+  consumeTime: number
+}
+
+export type { IReqVideoListParams, IReqVideo, IQuestionItem, IAddQuestionScore }

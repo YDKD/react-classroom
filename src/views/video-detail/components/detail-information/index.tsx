@@ -71,9 +71,7 @@ const DetailInformation = memo((props: IProps) => {
         </div>
         <div className="text">
           <div className="title">用时最短</div>
-          <div className="desc">
-            {formatSeconds(videoData.consumeTime) || 0}
-          </div>
+          <div className="desc">{formatSeconds(videoData.consumeTime)}</div>
         </div>
       </div>
     </DetailInformationWrapper>

@@ -18,17 +18,22 @@ const Countdown = ({
     seconds: seconds
   })
 
+  const getConsumedTime = () => {
+    // 计算当前已经消耗的时间
+    const currentConsumeTime =
+      (minutes - timeLeft.minutes) * 60 + (seconds - timeLeft.seconds)
+
+    handleTimeElapsed && handleTimeElapsed(currentConsumeTime)
+  }
+
   useEffect(() => {
     let countdownInterval: any = null
 
     if ((timeLeft.minutes === 0 && timeLeft.seconds === 0) || completed) {
       clearInterval(countdownInterval)
 
-      // 计算当前已经消耗的时间
-      const currentConsumeTime =
-        (minutes - timeLeft.minutes) * 60 + (seconds - timeLeft.seconds)
-
-      handleTimeElapsed && handleTimeElapsed(currentConsumeTime)
+      // 处理时间消耗
+      getConsumedTime()
     } else {
       countdownInterval = setInterval(() => {
         if (timeLeft.seconds === 0) {
@@ -42,6 +47,8 @@ const Countdown = ({
             seconds: timeLeft.seconds - 1
           })
         }
+
+        getConsumedTime()
       }, 1000)
     }
 

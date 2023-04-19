@@ -16,7 +16,8 @@ const montageUrl = (url: string) => {
  * @description: 将秒数，转为时分秒
  */
 
-const formatSeconds = (value: number) => {
+const formatSeconds = (value: number | null): string => {
+  if (value === null) return '0秒'
   let theTime = parseInt(value + '') // 秒
   let theTime1 = 0 // 分
   let theTime2 = 0 // 小时
