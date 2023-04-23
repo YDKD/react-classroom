@@ -8,7 +8,7 @@ const AppHeader = memo(() => {
   return (
     <AppWrapper>
       <AhLeft />
-      <AhCenter />
+      {/* <AhCenter /> */}
       <AhRight />
     </AppWrapper>
   )
