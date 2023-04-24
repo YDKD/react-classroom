@@ -20,7 +20,7 @@ const config = {
   /**
    * 网站标题
    */
-  websiteTitle: '小洁课堂'
+  websiteTitle: 'Free学习平台'
 }
 
 export default config

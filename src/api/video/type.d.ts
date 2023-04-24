@@ -29,4 +29,14 @@ interface IAddQuestionScore {
   consumeTime: number
 }
 
-export type { IReqVideoListParams, IReqVideo, IQuestionItem, IAddQuestionScore }
+interface ISearchVideo {
+  keyword: string
+}
+
+export type {
+  IReqVideoListParams,
+  IReqVideo,
+  IQuestionItem,
+  IAddQuestionScore,
+  ISearchVideo
+}

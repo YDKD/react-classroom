@@ -32,6 +32,13 @@ const AhCenterWrapper = styled.div`
       background-color: ${(props) => props.theme.color.primary};
     }
   }
+
+  .ant-input {
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  }
 `
 
 export default AhCenterWrapper

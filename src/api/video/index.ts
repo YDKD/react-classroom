@@ -1,5 +1,10 @@
 import { localRequest } from '@/service'
-import { IAddQuestionScore, IReqVideo, IReqVideoListParams } from './type'
+import {
+  IAddQuestionScore,
+  IReqVideo,
+  IReqVideoListParams,
+  ISearchVideo
+} from './type'
 
 /**
  * @description: 获取视频分类列表
@@ -69,5 +74,18 @@ export function addQuestionRecordApi(data: IAddQuestionScore) {
     url: '/video/question/score',
     method: 'POST',
     data
+  })
+}
+
+/**
+ * @param {IVideoQuery} params 查询参数
+ * @description: 获取视频列表
+ * @author: YDKD
+ */
+export function searchVideoByKeysApi(params: ISearchVideo) {
+  return localRequest.request({
+    url: '/video/search',
+    method: 'GET',
+    params
   })
 }

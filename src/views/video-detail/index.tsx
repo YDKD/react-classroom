@@ -92,7 +92,7 @@ const videoDetail = memo(() => {
   useEffect(() => {
     // 根据videoId获取到当前视频的详情数据
     dispatch(getVideoAction(videoId))
-  }, [showChallenge])
+  }, [showChallenge, videoId])
 
   return (
     <VideoDetailWrapper>
