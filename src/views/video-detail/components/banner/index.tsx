@@ -27,7 +27,12 @@ const Banner = memo((props: IProps) => {
             <div className="tag">已加入人数：{videoData.flowCount}人</div>
           </div>
 
-          <div className="join-btn" onClick={props.joinStudy}>
+          <div
+            className={
+              videoData.hasFollow === '1' ? 'join-btn joined' : 'join-btn'
+            }
+            onClick={props.joinStudy}
+          >
             {videoData.hasFollow === '1' ? '已加入学习' : '加入学习'}
           </div>
 

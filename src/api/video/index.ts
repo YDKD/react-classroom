@@ -89,3 +89,16 @@ export function searchVideoByKeysApi(params: ISearchVideo) {
     params
   })
 }
+
+/**
+ * @param {IVideoQuery} params 查询参数
+ * @description: 获取用户收藏的视频列表
+ * @author: YDKD
+ */
+export function getUserCollectionVideoApi(params?: any) {
+  return localRequest.request({
+    url: '/video/collection',
+    method: 'GET',
+    params
+  })
+}

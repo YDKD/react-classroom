@@ -15,4 +15,14 @@ interface IUserLogin {
   password: string
 }
 
-export type { ISendEmail, IRegisterData, IUserLogin }
+interface IUpdateUserPd {
+  password: string
+  newPassword: string
+}
+
+interface IUserInfo {
+  nick?: string
+  password?: string
+}
+
+export type { ISendEmail, IRegisterData, IUserLogin, IUpdateUserPd, IUserInfo }
