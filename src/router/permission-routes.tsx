@@ -25,6 +25,11 @@ const permissionRoutes: IRoute[] = [
     path: 'video/detail',
     name: 'Video',
     element: React.lazy(() => import('@/views/video-detail'))
+  },
+  {
+    path: 'search',
+    name: '搜索',
+    element: React.lazy(() => import('@/views/search'))
   }
 ]
 

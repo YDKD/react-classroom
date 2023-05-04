@@ -10,10 +10,10 @@ const settingConfigList: IFastEntranceItem[] = [
   },
   {
     id: 2,
-    link: '/notice',
+    link: '/question-count',
     icon: 'icon-notice',
-    title: '通知',
-    subTitle: '查看通知和消息'
+    title: '答题统计',
+    subTitle: '查看答题统计'
   },
   {
     id: 3,
