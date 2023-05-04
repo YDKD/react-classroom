@@ -1,30 +1,54 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import SearchWrapper from './style'
 import shiZhanImg from '@/assets/img/shizhan-title.png'
 import ListItem from './c-cpms/list-item'
+import { getAreaCategoryByAreaId, getVideoAreaList } from '@/api/video'
+
+interface IListItem {
+  name: string
+  value: number
+}
 
 const Search = memo(() => {
   const [direction, setDirection] = useState(1)
+  const [directionList, setDirectionList] = useState<IListItem[]>([])
+  const [category, setCategory] = useState(1)
+  const [categoryList, setCategoryList] = useState<IListItem[]>([])
   const [type, setType] = useState(1)
 
-  const directionList = [
-    {
-      name: '前端开发',
-      value: 1
-    },
-    {
-      name: '后端开发',
-      value: 2
-    },
-    {
-      name: '移动开发',
-      value: 3
-    },
-    {
-      name: '计算机基础',
-      value: 4
+  useEffect(() => {
+    getVideoAreaList().then((res) => {
+      if (res.status === 200) {
+        const _list = res.data.map((item: any) => {
+          return {
+            name: item.areaName,
+            value: item.id
+          }
+        })
+        setDirectionList(_list)
+        setDirection(_list[0].value)
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    const params = {
+      areaId: direction
     }
-  ]
+
+    getAreaCategoryByAreaId(params).then((res) => {
+      if (res.status === 200) {
+        const _list = res.data.map((item: any) => {
+          return {
+            name: item.name,
+            value: item.id
+          }
+        })
+        setCategoryList(_list)
+        setCategory(_list[0]?.value)
+      }
+    })
+  }, [direction])
 
   return (
     <SearchWrapper>
@@ -41,10 +65,16 @@ const Search = memo(() => {
         </div>
         <div className="list-wrap w143">
           <ListItem
-            title="方向"
+            title="方向："
             list={directionList}
             activeValue={direction}
             setActiveValue={(index: number) => setDirection(index)}
+          />
+          <ListItem
+            title="分类："
+            list={categoryList}
+            activeValue={category}
+            setActiveValue={(index: number) => setCategory(index)}
           />
         </div>
       </div>

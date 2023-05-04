@@ -6,7 +6,6 @@ const ListItemWrapper = styled.div`
   box-shadow: rgba(95, 101, 105, 0) 0px 12px 20px 0px;
   height: 54px;
   background: transparent;
-  margin-bottom: 25px;
   .title {
     width: 3.5em;
     color: #07111b;

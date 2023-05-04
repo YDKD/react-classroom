@@ -102,3 +102,15 @@ export function getUserCollectionVideoApi(params?: any) {
     params
   })
 }
+
+/**
+ * @description: 根据分区ID获取分区下的分类列表
+ * @author: YDKD
+ */
+export function getAreaCategoryByAreaId(params?: any) {
+  return localRequest.request({
+    url: '/video/area/category',
+    method: 'GET',
+    params
+  })
+}

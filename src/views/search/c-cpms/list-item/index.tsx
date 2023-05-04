@@ -22,7 +22,7 @@ const ListItem = memo((props: IProps) => {
 
   return (
     <ListItemWrapper>
-      <div className="title">{props.title}：</div>
+      <div className="title">{props.title}</div>
       <div className="list">
         {props.list.map((item, index) => {
           return (

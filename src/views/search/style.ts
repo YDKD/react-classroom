@@ -6,7 +6,6 @@ const SearchWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
-  height: 170px;
   padding: 16px 20px;
 
   .header-wrap {
