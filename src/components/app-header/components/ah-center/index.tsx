@@ -10,6 +10,7 @@ import { IVideoListItem } from '@/views/home/types'
 import useIsLogin from '@/hooks/tools/useIsLogin'
 import { router } from '@/router'
 import config from '@/config'
+import { useNavigate } from 'react-router-dom'
 
 interface ISearchItem extends IVideoListItem {
   value: string
@@ -20,6 +21,7 @@ const AhCenter = memo(() => {
   const [showSearch, setShowSearch] = useState<boolean>(true)
   const [options, setOptions] = useState<ISearchItem[]>([])
   const [value, setValue] = useState<string>('')
+  const navigate = useNavigate()
 
   const handleClick = () => {
     setShowSearch(false)
@@ -69,6 +71,10 @@ const AhCenter = memo(() => {
     setValue('')
   }
 
+  const onSearch = () => {
+    navigate('/web/search')
+  }
+
   return (
     <AhCenterWrapper>
       <div className="search" onClick={handleClick}>
@@ -90,7 +96,7 @@ const AhCenter = memo(() => {
             />
           </AutoComplete>
         )}
-        <div className="icon">
+        <div className="icon" onClick={onSearch}>
           <IconSearch />
         </div>
       </div>
