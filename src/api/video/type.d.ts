@@ -1,5 +1,6 @@
 interface IReqVideoListParams {
   areaId: number
+  categoryId?: number
   size: number
   no: number
 }

@@ -21,7 +21,7 @@ export function getVideoAreaList() {
  * @description: 获取视频分类列表
  * @returns
  */
-export function getVideoByAreaId(params: IReqVideoListParams) {
+export function getVideoList(params: IReqVideoListParams) {
   return localRequest.request({
     url: '/video/videos',
     method: 'GET',

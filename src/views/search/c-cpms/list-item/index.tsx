@@ -16,7 +16,6 @@ interface IProps {
 
 const ListItem = memo((props: IProps) => {
   const handleItemClick = (item: IListItem) => {
-    console.log(item)
     props.setActiveValue && props.setActiveValue(item.value)
   }
 
