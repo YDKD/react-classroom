@@ -16,7 +16,7 @@ const CarouselWrapper = styled.div`
     top: 40%;
     z-index: 10;
     transform: translateY(-50%);
-    opacity: 0.3;
+    /* opacity: 0.3; */
   }
 
   .leftButton:hover,
