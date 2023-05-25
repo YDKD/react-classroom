@@ -8,6 +8,11 @@ const HomeBannerWrapper = styled.div`
     background: url(${coverBg}) no-repeat no-repeat center;
     background-size: cover;
   }
+
+  .carousel-wrap {
+    height: 529px;
+    overflow: hidden;
+  }
 `
 
 export default HomeBannerWrapper

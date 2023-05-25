@@ -11,6 +11,12 @@ const VideoWrapper = styled.div`
       padding: 0 8px;
     }
   }
+
+  .ant-empty-image {
+    img {
+      margin: 0 auto;
+    }
+  }
 `
 
 export default VideoWrapper

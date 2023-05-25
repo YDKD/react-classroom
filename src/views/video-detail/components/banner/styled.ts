@@ -61,6 +61,11 @@ const BannerWrapper = styled.div`
         color: #333;
       }
 
+      .joined {
+        background-color: #ccc;
+        color: #fcfcfc;
+      }
+
       .challenge-btn {
         position: absolute;
         right: 10px;

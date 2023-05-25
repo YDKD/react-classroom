@@ -20,4 +20,14 @@ interface IBaseResponse<T = any> {
   msg: string
 }
 
-export type { FossRequestConfig, FossRequestInterceptor, IBaseResponse }
+interface IUserInfo {
+  nick?: string
+  password?: string
+}
+
+export type {
+  FossRequestConfig,
+  FossRequestInterceptor,
+  IBaseResponse,
+  IUserInfo
+}

@@ -37,6 +37,10 @@ interface IVideoListItem {
    * 耗时
    */
   consumeTime: number
+  /**
+   * 收藏数
+   */
+  collectionNum?: number
 }
 
 export { IAreaItem, IUserInfo, IVideoListItem }

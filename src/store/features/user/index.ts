@@ -18,10 +18,14 @@ const userSlice = createSlice({
   reducers: {
     setUserInfo(state, { payload }) {
       state.userInfo = payload
+    },
+    clearUserInfo(state) {
+      console.log('clearUserInfo')
+      state.userInfo = null
     }
   }
 })
 
-const { setUserInfo } = userSlice.actions
+export const { setUserInfo, clearUserInfo } = userSlice.actions
 
 export default userSlice.reducer

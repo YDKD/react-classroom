@@ -1,8 +1,6 @@
 import { memo } from 'react'
 import DetailInformationWrapper from './styled'
 import { IVideoListItem } from '@/views/home/types'
-import config from '@/config'
-import VideoPlayer from '@/components/video-player'
 import IconFont from '@/components/icon'
 import { formatSeconds } from '@/utils'
 

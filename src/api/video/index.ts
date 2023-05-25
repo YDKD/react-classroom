@@ -1,5 +1,10 @@
 import { localRequest } from '@/service'
-import { IAddQuestionScore, IReqVideo, IReqVideoListParams } from './type'
+import {
+  IAddQuestionScore,
+  IReqVideo,
+  IReqVideoListParams,
+  ISearchVideo
+} from './type'
 
 /**
  * @description: 获取视频分类列表
@@ -16,7 +21,7 @@ export function getVideoAreaList() {
  * @description: 获取视频分类列表
  * @returns
  */
-export function getVideoByAreaId(params: IReqVideoListParams) {
+export function getVideoList(params: IReqVideoListParams) {
   return localRequest.request({
     url: '/video/videos',
     method: 'GET',
@@ -69,5 +74,43 @@ export function addQuestionRecordApi(data: IAddQuestionScore) {
     url: '/video/question/score',
     method: 'POST',
     data
+  })
+}
+
+/**
+ * @param {IVideoQuery} params 查询参数
+ * @description: 获取视频列表
+ * @author: YDKD
+ */
+export function searchVideoByKeysApi(params: ISearchVideo) {
+  return localRequest.request({
+    url: '/video/search',
+    method: 'GET',
+    params
+  })
+}
+
+/**
+ * @param {IVideoQuery} params 查询参数
+ * @description: 获取用户收藏的视频列表
+ * @author: YDKD
+ */
+export function getUserCollectionVideoApi(params?: any) {
+  return localRequest.request({
+    url: '/video/collection',
+    method: 'GET',
+    params
+  })
+}
+
+/**
+ * @description: 根据分区ID获取分区下的分类列表
+ * @author: YDKD
+ */
+export function getAreaCategoryByAreaId(params?: any) {
+  return localRequest.request({
+    url: '/video/area/category',
+    method: 'GET',
+    params
   })
 }

@@ -36,7 +36,7 @@ const App = memo(() => {
   return (
     <div className="app">
       <AppHeader />
-      <div className="main-container">
+      <div className="main-container flex-1">
         <Outlet />
       </div>
       <div className="footer">

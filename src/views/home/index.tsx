@@ -4,7 +4,7 @@ import { IAreaItem, IVideoListItem } from './types'
 
 import HomeBanner from './components/home-banner'
 import HomeWrapper from './styled'
-import { getVideoAreaList, getVideoByAreaId } from '@/api/video'
+import { getVideoAreaList, getVideoList as getVideoListApi } from '@/api/video'
 import Area from './components/area-wrapper'
 import { webConfig } from '@/constants'
 import { IReqVideoListParams } from '@/api/video/type'
@@ -37,7 +37,7 @@ const Home = memo(() => {
 
     setLoadingVideo(true)
 
-    getVideoByAreaId(params).then((res) => {
+    getVideoListApi(params).then((res) => {
       const { data } = res
       setLoadingVideo(false)
       setVideoList(data.list)

@@ -7,19 +7,19 @@ const AppFooter = memo(() => {
   return (
     <AppFooterWrapper>
       <div className="wrapper">
-        <div className="title">创新课堂，美好未来</div>
-        <span className="subTitle">Innovative Classroom, Bright Future</span>
+        <div className="title mb-2">打造免费的在线学习平台</div>
+        <span className="subTitle">
+          本站所有资源均来自互联网，仅供学习交流使用，请勿用于商业用途！
+        </span>
         <div className="statement">
-          © 2022 {systemConfig.websiteTitle} 版权所有
+          © 2023 {systemConfig.websiteTitle} 版权所有
         </div>
         <div className="beian text-center">
           <a
             rel="noopener noreferrer"
             href="https://beian.miit.gov.cn/"
             target="_blank"
-          >
-            蜀ICP备2023001680号-1
-          </a>
+          ></a>
         </div>
       </div>
     </AppFooterWrapper>
